@@ -1,5 +1,4 @@
 import { Navigate } from 'react-router-dom';
-import { AdminRoutes } from '../admin/routes/AdminRoutes';
 import { useAuth } from '../context/AuthContext';
 
 export const AppRouter = ({children}) => {
