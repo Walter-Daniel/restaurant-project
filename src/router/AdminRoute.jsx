@@ -1,9 +1,9 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-export const AppRouter = ({children}) => {
+export const AdminRoutes = ({children}) => {
    const auth = useAuth();
    return (
-     (auth.role === 'USER_ROLE') ? children : <Navigate to='/login' replace />
+     (auth.role === 'ADMIN_ROLE') ? children : <Navigate to='/' replace />
   )
 }

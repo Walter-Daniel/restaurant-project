@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import {notification, Row } from 'antd';
@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
             const newToken = response.data.token;
             const role = response.data.user.role
             setRole(role)
+            console.log(role)
             setUser( newUser )
             setToken ( newToken )
             localStorage.setItem('user', JSON.stringify(newUser));
@@ -50,7 +51,7 @@ export const AuthProvider = ({ children }) => {
             setProduct( newProduct )
             openNotification('Login correcto', 'Inicio de sesión exitoso', 'success')
 
-            navigation('/')
+           role === 'USER_ROLE' ? navigation('/') : navigation('/users')
             
         } catch (error) {
             openNotification('Login incorrecto', 'Asegurese de colocar de manera correcta sus datos', 'error')

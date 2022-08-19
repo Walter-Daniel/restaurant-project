@@ -25,7 +25,7 @@ export const ProductCard = ({
         >
           <Meta title={name} description={description} />
           <p>Precio: ${price}</p>
-          <Button onClick={() => handleClick(product)} type="primary">Añadir al Carrito</Button>
+          <Button onClick={() => handleClick(product)} type="primary" disabled>Añadir al Carrito</Button>
         </Card>
 
     </>
