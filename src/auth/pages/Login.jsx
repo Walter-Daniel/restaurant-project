@@ -1,21 +1,11 @@
 
 import { Button, Checkbox, Form, Input, Col, notification, Row } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
 
 export const Login = () => {
-    const [user, setUser] = useState(null)
     const auth = useAuth();
 
-    const navigate = useNavigate();
-    const onLogin = () => {
-        navigate('/', {
-            replace: true
-        })
-    };
 
     const onFinish = async (formData) => {
 

@@ -295,7 +295,6 @@
 
 .ant-list-item-meta-avatar img {
   height: 2rem;
-  padding-left: 1rem;
 }
 
 .ant-layout-sider  {
@@ -308,6 +307,9 @@
 }
 .ant-list-item-meta-title {
   color: var(--color-2);
+}
+.ant-list-item-meta {
+  padding-left: 1rem;
 }
 .navLink-active  .ant-list-item-meta-title {
   color: var(--color-2);
@@ -510,8 +512,19 @@
 }
 
 .layout-home {
-  margin-top: 10rem;
-  height: 80vh;
+  margin-top: 7rem;
+  min-height: 80vh;
+}
+.title-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title-layout img {
+  height: 6rem;
+}
+.title-layout h1 {
+  font-size: 3rem;
 }
 
 /* REGISTER************** */
@@ -585,4 +598,8 @@
 .logo {
   display: flex;
   justify-content: center;
+}
+
+.w-full {
+  width: 100%;
 }

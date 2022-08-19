@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { UserTable } from "./UserTable";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import { UsersList } from "./UsersList";
 
 const URL = 'http://rolling-food.herokuapp.com/api/user'
 
@@ -27,6 +27,10 @@ export const Users = () => {
         setTotal(response.data.total)
         const usersDB = response.data.users;
         setUsers(usersDB)
+    };
+
+    function deleteUser(id) {
+      console.log('delete user', id)
     }
 
     
@@ -36,7 +40,7 @@ export const Users = () => {
         <h1>Users Components</h1>
         <h2>Cantidad de usuarios: {total}</h2>
         <h2>Cantidad de usuarios por página: {users.length}</h2>
-        <UserTable users={users} />
+        <UsersList users={users} deleteUser={deleteUser}/>
     </>
   )
 }
