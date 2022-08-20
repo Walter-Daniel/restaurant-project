@@ -10,12 +10,12 @@ import { UsersList } from "./UsersList";
 const URL = 'http://rolling-food.herokuapp.com/api/product';
 
 const openNotification = (message, description, type) => {
-    notification[type]({
-      message: message,
-      description: description,
-      placement: 'bottom'
-    });
-  };
+  notification[type]({
+    message: message,
+    description: description,
+    placement: 'bottom'
+  });
+};
 
 export const Products = () => {
 
@@ -42,14 +42,25 @@ export const Products = () => {
 
     async function deleteUser(id) {
       try {
-        console.log('delete user', id);
         await axios.delete(`${URL}/${id}`)
         const newUsers = users.filter( user => user._id !== id);
         setUsers(newUsers);
         openNotification('Usuario Borrado', 'El usuario ha sido eliminado de la base de datos', 'error')
         
       } catch (error) {
-        console.log('error para borrar usuario', error)
+        openNotification('Error', 'Error al intentar borrar un usuario', 'error')
+      }
+    }
+
+    async function editUser(id) {
+      try {
+        console.log('edit user', id);
+        await axios.put(`${URL}/${id}`)
+        const newUsers = users.filter( user => user._id !== id);
+        setUsers(newUsers);
+        openNotification('Usuario Borrado', 'El usuario ha sido eliminado de la base de datos', 'error')
+        
+      } catch (error) {
         openNotification('Error', 'Error al intentar borrar un usuario', 'error')
       }
     }

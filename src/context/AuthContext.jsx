@@ -4,8 +4,6 @@ import axios from 'axios';
 import {notification, Row } from 'antd';
 
 const AuthContext = createContext();
-// const URL = 'http://localhost:3400/api/auth/login';
-// const URLPRODUCT = 'http://localhost:3400/api/product';
 
 const URL = 'http://rolling-food.herokuapp.com/api/auth/login';
 const URLPRODUCT = 'http://rolling-food.herokuapp.com/api/product';
