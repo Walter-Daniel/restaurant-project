@@ -1,4 +1,4 @@
-import { LoginOutlined, LogoutOutlined } from '@ant-design/icons';
+import { LoginOutlined, LogoutOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { Avatar, List } from 'antd';
 import { NavLink } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
@@ -39,7 +39,7 @@ export const Sidebar = () => {
           title: 'Productos',
           path: '/pizza',
           protected: true,
-          img: '../../../assets/images/sider/products.png'
+          img: '../../../assets/images/sider/product.png'
         },
         {
           title: 'Ordenes',
@@ -85,7 +85,8 @@ export const Sidebar = () => {
                     </>
                           : 
                           <>
-                          <NavLink to='/Login'>
+                          <NavLink to='/Login'
+                                    className={({ isActive }) => isActive ? 'navLink-active' : undefined}>
                               <List.Item>
                                   <List.Item.Meta
                                   avatar={<Avatar icon={<LoginOutlined />} />}
@@ -95,10 +96,11 @@ export const Sidebar = () => {
                               </List.Item>
 
                             </NavLink>
-                          <NavLink to='/register'>
+                          <NavLink to='/register'
+                                    className={({ isActive }) => isActive ? 'navLink-active' : undefined}>
                               <List.Item>
                                   <List.Item.Meta
-                                  avatar={<Avatar icon={<LoginOutlined />} />}
+                                  avatar={<Avatar icon={<PlusCircleOutlined />} />}
                                   title='Register'
                                   
                                   />

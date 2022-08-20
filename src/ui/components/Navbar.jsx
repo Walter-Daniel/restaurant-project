@@ -32,42 +32,7 @@ export function Navbar({set}) {
           </div>                
         </div>
       </div>
-      {/* <div className="container-fluid">
-        <div className="header">
-          <div className="logo">
-            <i className="fas fa-bolt"></i>
-            <a href="http://google.com">Bon Appétit</a>
-          </div>
-          <div className="mobileHidden">
-            <NavbarSecondary />
-            <Anchor targetOffset="65">
-              <Link href="/" title="Inicio" />
-              <Link href="/minutas" title="Minutas" />
-              <Link href="/search" title="Buscar" />
-            </Anchor>
-              
-          </div>
-          <div className="mobileVisible">
-            <Button type="primary ant-btn-primary-pag" onClick={showDrawer}>
-              <i className="fas fa-bars"></i>
-            </Button>
-            <Drawer
-              title= "Menú"
-              placement="right"
-              onClose={onClose}
-              visible={visible}
-            >
-              <Anchor targetOffset="65">
-                  <Link href="/" title="Inicio" />
-                  <Link href="/minutas" title="Minutas" />
 
-                  <Link href="/search" title="Buscar" />
-              </Anchor>
-                  <NavbarSecondary />
-            </Drawer>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }
