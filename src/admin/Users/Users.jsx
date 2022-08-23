@@ -21,20 +21,29 @@ export const Users = () => {
     const [users, setUsers] = useState([]);
     const [total, setTotal] = useState(0);
     const [createUser, setCreateUser] = useState(false);
-    const [userToEdit, setUserToEdit] = useState(null);
 
-    abrirCerrarModalInsertar = () => {
+    const openCloseModal = () => {
       setCreateUser(!createUser);
     }
 
-    useEffect(() => {
-    
+    useEffect(() => { 
       getUsers();
     }, [])
     
 
     async function getUsers() {
         const response = await axios(URL, {
+                headers: {
+                    'Authorization': 'Bearer ' + auth.token
+                }
+        })
+        setTotal(response.data.total)
+        const usersDB = response.data.users;
+        setUsers(usersDB)
+    };
+
+    async function createNewUser() {
+        const response = await axios.post(URL, {
                 headers: {
                     'Authorization': 'Bearer ' + auth.token
                 }
@@ -74,7 +83,7 @@ export const Users = () => {
         openNotification('Edición completa', 'El usuario ha sido editado de manera exitosa', 'success')
         
       } catch (error) {
-      console.log('error para borrar usuario', error)
+      console.log('error al editar usuario', error)
         openNotification('Error', 'Error al intentar editar un usuario', 'error')
       }
     }
@@ -84,7 +93,7 @@ export const Users = () => {
         <h1>Users Components</h1>
         <h2>Cantidad de usuarios: {total}</h2>
         <h2>Cantidad total de usuarios: {users.length}</h2>
-        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} createUser={createUser}/>
+        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} openCloseModal={openCloseModal} createUser={createUser}/>
     </>
   )
 }

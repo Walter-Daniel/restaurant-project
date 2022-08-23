@@ -1,8 +1,33 @@
-import { Button, Form } from "antd"
+import { Button, Form, Input, Modal } from "antd"
 import Item from "antd/lib/list/Item"
+import { useState } from "react";
+
+const layout = {
+  labelCol:{
+    span: 8
+  },
+  wrapperCol: {
+    span: 16
+  }
+};
+
+export const ModalForm = ({ openCloseModal, createUser }) => {
 
 
-export const ModalForm = ({ createUser }) => {
+  const [newUser, setNewUser] = useState({
+    id: '',
+    fullName: '',
+    email: '',
+    password: ''
+  })
+
+  const handleChange = (e) => {
+    const { fullName, value } = e.target;
+    setNewUser({...newUser,
+    [fullName]: value});
+    console.log(newUser)
+  }
+
   return (
     <Modal visible={ createUser }
            title= "Crear un nuevo usuario"
@@ -14,7 +39,7 @@ export const ModalForm = ({ createUser }) => {
             <Button type="primary" htmlType="submit"> Crear </Button>
            ]}
     >
-      <Form>
+      <Form {...layout}>
         <Form.Item
           name="fullName"
           label="Nombre Completo"
@@ -31,7 +56,7 @@ export const ModalForm = ({ createUser }) => {
             }
           ]}
         >
-          <Input placeholder='María Ramos'/>
+          <Input placeholder='María Ramos' onChange={ handleChange }/>
         </Form.Item>
         <Form.Item
           label="Correo"
@@ -44,7 +69,7 @@ export const ModalForm = ({ createUser }) => {
           },
           ]}
         >
-          <Input />
+          <Input placeholder="maria@email.com" onChange={ handleChange }/>
         </Form.Item>
         <Form.Item
           label="Password"
@@ -61,7 +86,7 @@ export const ModalForm = ({ createUser }) => {
           },
           ]}
         >
-          <Input.Password />
+          <Input.Password onChange={ handleChange }/>
         </Form.Item>
       </Form>
     </Modal>

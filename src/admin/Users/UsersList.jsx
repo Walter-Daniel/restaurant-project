@@ -5,11 +5,11 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { ModalForm } from '../components/ModalForm';
 const { Column, ColumnGroup } = Table;
 
-export const UsersList = ({ users, deleteUser, editUser, createUser }) => {
+export const UsersList = ({ users, deleteUser, editUser, openCloseModal, createUser}) => {
   return (
     <>
-      <Button type='primary'>Agregar un nuevo usuario</Button>
-      <ModalForm createUser={createUser} />
+      <Button type='primary' onClick={openCloseModal}>Agregar un nuevo usuario</Button>
+      <ModalForm createUser={createUser} openCloseModal={openCloseModal}/>
       <Table dataSource={users}>       
           <Column title="ID" dataIndex="_id" key="_id" />
           <Column title="Usuario" dataIndex="fullName" key="fullName" />
