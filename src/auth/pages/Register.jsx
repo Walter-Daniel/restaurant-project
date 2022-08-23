@@ -12,6 +12,7 @@ import {
   } from 'antd';
   import { createRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { FormItemsRegister } from '../components';
   
   const { Option } = Select;
   
@@ -105,81 +106,9 @@ import { useAuth } from '../../context/AuthContext';
                   layout="vertical"
                   onFinish={onFinish}
                   ref={formReference}
-                  initialValues={{
-                    prefix: '54',
-                  }}
                   scrollToFirstError
                 >
-                  <Form.Item
-                    name="fullName"
-                    label="Nombre(s)"
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Por favor ingrese su nombre completo!',
-                        whitespace: true,
-                      },
-                    ]}
-                  >
-                    <Input placeholder='María Ramos' minLength={6} maxLength={30}  />
-                  </Form.Item>
-  
-                  <Form.Item
-                    name="email"
-                    label="Correo electrónico"
-                    rules={[
-                      {
-                        type: 'email',
-                        message: 'El correo no es valido!',
-                      },
-                      {
-                        required: true,
-                        message: 'Por favor introduce tu correo',
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-  
-                  <Form.Item
-                    name="password"
-                    label="Contraseña"
-                    rules={[
-                      {
-                        required: true,
-                        min: 6,
-                        max: 12,
-                        message: 'Tu contraseña debe terner entre ${min} y ${max} caracteres!',
-                      },
-                    ]}
-                    hasFeedback
-                  >
-                    <Input.Password minLength={6} />
-                  </Form.Item>
-  
-                  <Form.Item
-                    name="confirm"
-                    label="Confirmar contraseña"
-                    dependencies={['password']}
-                    hasFeedback
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Por favor confirma tu contraseña',
-                      },
-                      ({ getFieldValue }) => ({
-                        validator(_, value) {
-                          if (!value || getFieldValue('password') === value) {
-                            return Promise.resolve();
-                          }
-  
-                          return Promise.reject(new Error('Las contraseñas no coinciden'));
-                        },
-                      }),
-                    ]}
-                  >
-                    <Input.Password />
-                  </Form.Item>
+                  <FormItemsRegister />
   
   
                   <Form.Item

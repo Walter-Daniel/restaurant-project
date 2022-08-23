@@ -19,10 +19,15 @@ const openNotification = (message, description, type) => {
 export const Users = () => {
     const auth= useAuth();
     const [users, setUsers] = useState([]);
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState(0);
+    const [userToEdit, setUserToEdit] = useState(null)
+    const [createUser, setCreateUser] = useState(false);
 
-    useEffect(() => {
-    
+    const openCloseModal = () => {
+      setCreateUser(!createUser);
+    }
+
+    useEffect(() => { 
       getUsers();
     }, [])
     
@@ -38,9 +43,8 @@ export const Users = () => {
         setUsers(usersDB)
     };
 
-    async function deleteUser(id) {
 
-      
+    async function deleteUser(id) {    
       try {
 
         const deletedUser = await axios.delete(`${URL}/${id}` , {
@@ -50,12 +54,30 @@ export const Users = () => {
         }) 
         const newUsers = users.filter( user => user._id !== id);
         setUsers(newUsers);
-        openNotification('Usuario Eliminado', 'El usuario ha sido eliminado de manera exitosa', 'succes')
+        openNotification('Usuario Eliminado', 'El usuario ha sido eliminado de manera exitosa', 'success')
         
       } catch (error) {
-        console.log('error para borrar usuario', error)
         openNotification('Error', 'Error al intentar borrar un usuario', 'error')
       }
+    }
+
+    async function editUser(id) {    
+      try {
+
+        // const editUser = await axios.put(`${URL}/${id}` , {
+        //         headers:  {
+        //           'Authorization': 'Bearer ' + auth.token
+        //       }
+        // }) 
+        const newEditUser = users.find( user => user._id === id);
+        setUsers(newEditUser);
+        openNotification('Edición completa', 'El usuario ha sido editado de manera exitosa', 'success')
+        
+      } catch (error) {
+      console.log('error al editar usuario', error)
+        openNotification('Error', 'Error al intentar editar un usuario', 'error')
+      }
+      
     }
      
   return (
@@ -63,7 +85,7 @@ export const Users = () => {
         <h1>Users Components</h1>
         <h2>Cantidad de usuarios: {total}</h2>
         <h2>Cantidad total de usuarios: {users.length}</h2>
-        <UsersList users={users} deleteUser={deleteUser}/>
+        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} openCloseModal={openCloseModal} createUser={createUser}/>
     </>
   )
 }
