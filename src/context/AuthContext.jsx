@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [product, setProduct] = useState(JSON.parse(localStorage.getItem('product')));
-    const [orden, setOrden] = useState(JSON.parse(localStorage.getItem('productInCart')));
     const [role, setRole] = useState([])
     const navigation = useNavigate();
 
@@ -81,8 +80,6 @@ export const AuthProvider = ({ children }) => {
         product,
         login,
         logout,
-        orden,
-        setOrden,
         role,
         register
     }

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import { notification } from 'antd';
 import axios from "axios";
-import { useAuth } from "../../context/AuthContext";
 import { UsersList } from "./UsersList";
 
 const URL = 'http://rolling-food.herokuapp.com/api/user';
@@ -21,10 +21,13 @@ export const Users = () => {
     const [users, setUsers] = useState([]);
     const [total, setTotal] = useState(0);
     const [userToEdit, setUserToEdit] = useState(null)
-    const [createUser, setCreateUser] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const openCloseModal = () => {
-      setCreateUser(!createUser);
+    const openModal = () => {
+      setIsModalVisible(true);
+    }
+    const closeModal = () => {
+      setIsModalVisible(false);
     }
 
     useEffect(() => { 
@@ -64,18 +67,14 @@ export const Users = () => {
     async function editUser(id) {    
       try {
 
-        // const editUser = await axios.put(`${URL}/${id}` , {
-        //         headers:  {
-        //           'Authorization': 'Bearer ' + auth.token
-        //       }
-        // }) 
-        const newEditUser = users.find( user => user._id === id);
-        setUsers(newEditUser);
-        openNotification('Edición completa', 'El usuario ha sido editado de manera exitosa', 'success')
+        const EditUser = users.find( user => user._id === id);
+        setUserToEdit(EditUser);
+        console.log(EditUser)
+        console.log('edit', id)
+        openModal();
         
       } catch (error) {
       console.log('error al editar usuario', error)
-        openNotification('Error', 'Error al intentar editar un usuario', 'error')
       }
       
     }
@@ -85,7 +84,7 @@ export const Users = () => {
         <h1>Users Components</h1>
         <h2>Cantidad de usuarios: {total}</h2>
         <h2>Cantidad total de usuarios: {users.length}</h2>
-        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} openCloseModal={openCloseModal} createUser={createUser}/>
+        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} user ={userToEdit} closeModal={closeModal} isModalVisible={isModalVisible} />
     </>
   )
 }
