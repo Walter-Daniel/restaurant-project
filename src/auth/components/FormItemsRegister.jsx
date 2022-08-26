@@ -6,7 +6,7 @@ export const FormItemsRegister = () => {
     <>  
       <Form.Item
         name="fullName"
-        label="Nombre(s)"
+        label="Nombre completo:"
         rules={[
           {
             required: true,
@@ -20,11 +20,11 @@ export const FormItemsRegister = () => {
           }
         ]}
       >
-        <Input placeholder='María Ramos' />
+        <Input placeholder='María Ramos' type='text'/>
       </Form.Item>
       <Form.Item
         name="email"
-        label="Correo electrónico"
+        label="Correo electrónico:"
         rules={[
           {
             type: 'email',
@@ -40,7 +40,7 @@ export const FormItemsRegister = () => {
       </Form.Item>
       <Form.Item
         name="password"
-        label="Contraseña"
+        label="Contraseña:"
         rules={[
           {
             required: true,
@@ -55,7 +55,7 @@ export const FormItemsRegister = () => {
       </Form.Item>
       <Form.Item
         name="confirm"
-        label="Confirmar contraseña"
+        label="Confirmar contraseña:"
         dependencies={['password']}
         hasFeedback
         rules={[

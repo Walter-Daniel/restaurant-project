@@ -18,12 +18,7 @@ export const RestaurantApp = () => {
                   style={{
                     position: 'sticky',
                     }}
-                  onBreakpoint={broken => {
-                    console.log(broken);
-                  }}
-                  onCollapse={(collapsed, type) => {
-                    console.log(collapsed, type);
-                  }}>
+                  >
             <Sidebar />
           </Sider>
           <Layout>
@@ -34,7 +29,7 @@ export const RestaurantApp = () => {
             <ProductsRoutes />
           </Content>
           <Footer>
-              <FooterComponent />
+            <FooterComponent />
           </Footer>     
         </Layout>
       </Layout>

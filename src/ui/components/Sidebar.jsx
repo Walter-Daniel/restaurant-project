@@ -37,7 +37,7 @@ export const Sidebar = () => {
         },
         {
           title: 'Productos',
-          path: '/pizza',
+          path: '/products',
           protected: true,
           img: '../../../assets/images/sider/product.png'
         },

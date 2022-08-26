@@ -3,8 +3,7 @@ import { useState } from "react";
 import { notification } from 'antd';
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
-import { UsersList } from "./UsersList";
-
+import { ProductsTable } from "./ProductsTable";
 
 
 const URL = 'http://rolling-food.herokuapp.com/api/product';
@@ -21,23 +20,31 @@ export const Products = () => {
 
     const auth= useAuth();
     const [products, setProducts] = useState([]);
-    const [total, setTotal] = useState(0)
+    const [userToEdit, setUserToEdit] = useState(null);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const openModal = () => {
+      setIsModalVisible(true);
+    }
+    const closeModal = () => {
+      setIsModalVisible(false);
+    }
 
     useEffect(() => {
-    
       getProducts();
     }, [])
     
 
     async function getProducts() {
-        const response = await axios(URL, {
+        const productsDB = await axios(URL, {
                 headers: {
                     'Authorization': 'Bearer ' + auth.token
                 }
         })
-        setTotal(response.data.total)
-        const usersDB = response.data.users;
-        setUsers(usersDB)
+        const productList= productsDB.data.products;
+        setProducts(productList)
+        console.log(productList)
+
     };
 
     async function deleteUser(id) {
@@ -66,10 +73,12 @@ export const Products = () => {
     }
   return (
     <>
-        <h1>Users Components</h1>
-        <h2>Cantidad de usuarios: {total}</h2>
-        <h2>Cantidad total de productos: {auth.products.length}</h2>
-        <UsersList users={users} deleteUser={deleteUser}/>
+        <h1>Profuctos</h1>
+        <h1>Profuctos</h1>
+      
+        <h1>Profuctos</h1>
+        
+        /* <ProductsTable products={products} /> */
     </>
   )
 }
