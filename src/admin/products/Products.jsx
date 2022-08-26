@@ -20,7 +20,7 @@ export const Products = () => {
 
     const auth= useAuth();
     const [products, setProducts] = useState([]);
-    const [userToEdit, setUserToEdit] = useState(null);
+    const [productToEdit, setProductToEdit] = useState(null);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const openModal = () => {
@@ -47,25 +47,29 @@ export const Products = () => {
 
     };
 
-    async function deleteUser(id) {
+    async function deleteProduct(id) {
       try {
-        await axios.delete(`${URL}/${id}`)
-        const newUsers = users.filter( user => user._id !== id);
-        setUsers(newUsers);
-        openNotification('Usuario Borrado', 'El usuario ha sido eliminado de la base de datos', 'error')
+        const deletedProduct = await axios.delete(`${URL}/${id}` , {
+          headers:  {
+            'Authorization': 'Bearer ' + auth.token
+                    }
+        }) 
+        const newProduct = products.filter( product => product._id !== id);
+        setProducts(newProduct);
+        openNotification('Eliminado', 'El producto ha sido eliminado de la base de datos', 'success')
         
       } catch (error) {
-        openNotification('Error', 'Error al intentar borrar un usuario', 'error')
+        openNotification('Error', 'Error al intentar borrar un producto', 'error')
       }
     }
 
-    async function editUser(id) {
+    async function editProduct(id) {
       try {
-        console.log('edit user', id);
-        await axios.put(`${URL}/${id}`)
-        const newUsers = users.filter( user => user._id !== id);
-        setUsers(newUsers);
-        openNotification('Usuario Borrado', 'El usuario ha sido eliminado de la base de datos', 'error')
+        console.log('edit product', id);
+        // await axios.put(`${URL}/${id}`)
+        // const newProduct = products.filter( product => product._id !== id);
+        // setProducts(newProduct);
+        // openNotification('Usuario Borrado', 'El usuario ha sido eliminado de la base de datos', 'error')
         
       } catch (error) {
         openNotification('Error', 'Error al intentar borrar un usuario', 'error')
@@ -78,7 +82,7 @@ export const Products = () => {
       
         <h1>Profuctos</h1>
         
-        /* <ProductsTable products={products} /> */
+        <ProductsTable products={products} deleteProduct={deleteProduct} editProduct={editProduct} product ={productToEdit} closeModal={closeModal} isModalVisible={isModalVisible} />
     </>
   )
 }

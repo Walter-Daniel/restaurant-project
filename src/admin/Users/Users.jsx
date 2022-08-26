@@ -49,7 +49,6 @@ export const Users = () => {
 
     async function deleteUser(id) {    
       try {
-
         const deletedUser = await axios.delete(`${URL}/${id}` , {
                 headers:  {
                   'Authorization': 'Bearer ' + auth.token
@@ -66,17 +65,14 @@ export const Users = () => {
 
     async function editUser(id) {    
       try {
-
         const EditUser = users.find( user => user._id === id);
         setUserToEdit(EditUser);
-        console.log(EditUser)
         console.log('edit', id)
         openModal();
         
       } catch (error) {
       console.log('error al editar usuario', error)
-      }
-      
+      }     
     }
      
   return (
@@ -84,7 +80,7 @@ export const Users = () => {
         <h1>Users Components</h1>
         <h2>Cantidad de usuarios: {total}</h2>
         <h2>Cantidad total de usuarios: {users.length}</h2>
-        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} user ={userToEdit} closeModal={closeModal} isModalVisible={isModalVisible} />
+        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} user ={userToEdit} closeModal={closeModal} isModalVisible={isModalVisible} setUsers={setUsers} />
     </>
   )
 }

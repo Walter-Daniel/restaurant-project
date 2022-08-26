@@ -18,6 +18,7 @@ const URL = 'http://rolling-food.herokuapp.com/api/user';
 
 export const ModalForm = ({ closeModal, user, isModalVisible }) => {
 
+
     const auth = useAuth();
     const [form] = Form.useForm();
     
@@ -41,9 +42,9 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
         },
       });
     };
-    const onFinish = async() => {
+    const onFinish = async(values) => {
        try {
-        const editUser = await axios.put(`${URL}/${user._id}` , {
+        const editUser = await axios.put(`${URL}/${user._id}` , values, {
           headers:  {
             'Authorization': 'Bearer ' + auth.token
                     }
@@ -53,7 +54,6 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
        } catch (error) {
         console.log(error)
        }
-      
     }
 
   return (
@@ -69,10 +69,8 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
                 </Button>                
                 <Button type="primary" form="myForm" key="submit" htmlType="submit">
                     Enviar
-                </Button>
-                   
+                </Button>                
               </Form.Item>
-         
            ]}
     >
       <Form {...layout}
