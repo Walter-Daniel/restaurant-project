@@ -113,7 +113,7 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
       >
         <Input type='email'/>
       </Form.Item>
-       {/* <Form.Item
+      <Form.Item
         name="active"
         label="Estado"
         rules={[{ required: true, message: 'Por favor, selecciona un estado!' }]}
@@ -122,7 +122,7 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
           <Radio.Button value="true">Activo</Radio.Button>
           <Radio.Button value="false">Inactivo</Radio.Button>
         </Radio.Group>
-      </Form.Item> */}
+      </Form.Item>
        
       </Form>
     </Modal>

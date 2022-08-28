@@ -1,18 +1,21 @@
-
-
-import { Space, Table, Tag, Button, Tooltip, List, Avatar } from 'antd';
-import { DeleteOutlined, EditOutlined, StarOutlined } from '@ant-design/icons';
-import { ModalForm } from '../components/ModalForm';
+import { Space, Table, Tag, Button, Tooltip, List, Avatar, Typography } from 'antd';
+import { DeleteOutlined, EditOutlined} from '@ant-design/icons';
+import { ModalProduct } from './ModalProduct';
+import { CreateProduct } from './CRUD/CreateProduct';
 const { Column, ColumnGroup } = Table;
+const { Text } = Typography;
 
-export const ProductsTable = ({ products, product,  editProduct, closeModal, isModalVisible, deleteProduct}) => {
+export const ProductsTable = ({ products, product,  editProduct, closeModal, isModalVisible, deleteProduct, createProduct, isModalCreateVisible, closeModalCreate}) => {
 
   return (
     <>
-      <ModalForm product={product}  closeModal={closeModal} isModalVisible={isModalVisible}/>
-      <button className='primary'> Agregar Producto</button>
+      <ModalProduct product={product}  closeModal={closeModal} isModalVisible={isModalVisible}/>
+      <CreateProduct product={product}  closeModalCreate={closeModalCreate} isModalCreateVisible={isModalCreateVisible}/>
+      <div className="div-boton">
+        <Button  className='btn-second' onClick={() => createProduct() }> Agregar Producto</Button>
+      </div>
 
-      <div className="container-fluid">
+      <div className="layout-home">
         <List
             itemLayout="vertical"
             size="large"
@@ -41,11 +44,15 @@ export const ProductsTable = ({ products, product,  editProduct, closeModal, isM
                   title={item.name}
                   description={item.description}
                   price={item.price}
-                  category={item.category.name}
-                  extra={item.category.name}
                 />
-                <p>Precio: ${item.price}</p>
-                <p>Categoría: {item.category.name}</p>
+                <div className="list-product">
+                  <Text>Categoría: {item.category.name}</Text>
+                  <Text strong>Precio: ${item.price}</Text> 
+                  <div>
+                  <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}
+
+                  </div>
+                </div>
               </List.Item>
             )}
           />
