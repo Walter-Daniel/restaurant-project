@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             const response = await axios.post( URL , formData);
             const newUser = response.data.user;
             const newToken = response.data.token;
-            const role = response.data.user.role
+            const role = response.data.user.role;
             setRole(role)
             console.log(role)
             setUser( newUser )
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
             setProduct( newProduct )
             openNotification('Login correcto', 'Inicio de sesión exitoso', 'success')
 
-           role === 'USER_ROLE' ? navigation('/') : navigation('/users')
+           user.role === 'USER_ROLE' ? navigation('/') : navigation('/users')
             
         } catch (error) {
             openNotification('Login incorrecto', 'Asegurese de colocar de manera correcta sus datos', 'error')

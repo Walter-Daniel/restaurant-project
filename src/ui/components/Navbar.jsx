@@ -1,14 +1,17 @@
-import { Anchor, Drawer, Button, Typography, List, Avatar} from 'antd';
 import { useAuth } from '../../context/AuthContext';
-import { NavLink } from "react-router-dom";
-import { LoginOutlined, LogoutOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { Link, NavLink } from "react-router-dom";
+import { LoginOutlined, LogoutOutlined } from '@ant-design/icons';
+import { ItemCart } from './CartItems/ItemCart';
+import { AuthCart } from './CartItems/AuthCart';
 
-const { Text } = Typography;
-const { Link } = Anchor;
 
-export function Navbar({set}) {
+
+
+export function Navbar() {
   
   const auth = useAuth();
+
+
 
   return (
     <>
@@ -16,19 +19,11 @@ export function Navbar({set}) {
       <div className="container-fluid">
         <div className="header">
           <div className="logo">
-            <a href="/">Bon Appétit</a>
+            <Link to="/">Bon Appétit</Link>
           </div>
           <div className='item-login-logout'>
-          { auth.user ?
-                    <>
-                      <Text strong>Buenas tardes {auth.user.fullName} !</Text>
-                      <div className="cart">
-                        <a href='/shop'><ShoppingCartOutlined /></a>
-                        <span>0</span>
-                      </div>
-                    </>
-                          : ''
-        }
+          { auth.user ? <AuthCart /> : '' }
+        
           </div>                
         </div>
       </div>
