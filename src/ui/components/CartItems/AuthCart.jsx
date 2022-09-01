@@ -9,8 +9,10 @@ export const AuthCart = () => {
     const auth = useAuth();
           
   return (
-    <>
-        <Text strong><Time /> {auth.user.fullName} !</Text>
+    <>  
+        <div className="mobileHidden">
+          <Text strong><Time /> {auth.user.fullName} !</Text>
+        </div>
         { auth.user.role === 'USER_ROLE' ? <ItemCart /> : '' } 
     
     </>

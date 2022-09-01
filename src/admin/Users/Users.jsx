@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { Title } from "../components";
 import { notification } from 'antd';
 import axios from "axios";
 import { UsersList } from "./UsersList";
@@ -74,11 +75,11 @@ export const Users = () => {
       console.log('error al editar usuario', error)
       }     
     }
-     
+    const title = 'Usuarios'
   return (
     <>
-        <h1>Users Components</h1>
-        <h2>Cantidad de usuarios: {total}</h2>
+        <Title title={title} />
+        <hr />
         <h2>Cantidad total de usuarios: {users.length}</h2>
         <UsersList users={users} deleteUser={deleteUser} editUser={editUser} user ={userToEdit} closeModal={closeModal} isModalVisible={isModalVisible} setUsers={setUsers} />
     </>

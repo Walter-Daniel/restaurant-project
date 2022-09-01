@@ -22,12 +22,12 @@ export const Login = () => {
       
   return (
     <div className="hero">
-        <div className='login'>
+        <div className='container-fluid'>
             <Row justify='center' className='login-container'>
                 <Col xs={24} lg={12}>
                     <Form
                         className='login-form'
-                        name="basic"
+                        name="login"
                         labelCol={{
                             span: 8,
                         }}

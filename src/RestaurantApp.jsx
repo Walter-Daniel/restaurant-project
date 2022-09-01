@@ -14,26 +14,23 @@ export const RestaurantApp = () => {
   return (
     <AuthProvider>
       <CartProvider>
-        <Layout className='mainLayout'>
-            <Sider  breakpoint="lg"
-                    collapsedWidth="0"
-                    style={{
-                      position: 'sticky',
-                      }}
-                    >
+        <Layout className='mainLayout'> 
+          <Header>
+            <Navbar />  
+          </Header>
+          <Layout>
+          <div className="mobileHidden">
+            <Sider >
               <Sidebar />
             </Sider>
-            <Layout>
-            <Header>
-              <Navbar />  
-            </Header>
+           </div> 
             <Content> 
               <ProductsRoutes />
-            </Content>
-            <Footer>
-              <FooterComponent />
-            </Footer>     
+            </Content>   
           </Layout>
+          <Footer>
+              <FooterComponent />
+            </Footer> 
         </Layout>
       </CartProvider>
     </AuthProvider>

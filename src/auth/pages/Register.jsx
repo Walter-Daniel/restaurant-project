@@ -88,60 +88,57 @@ import { FormItemsRegister } from '../components';
   
     return (
       
-  <div className="container-register">
-        <Row>
-          
-            <Col span={12}>
-              <div className="img-register">
-                <img src="../../../assets/images/register/XN5QXNVRPFCD7F6Q7PYVHR3OIU.jpg" alt="empanadas" />
-                <h2>Registrate</h2>
-              </div>
-            </Col>
-            <Col span={12}>
-              <div className="container-form">
-                <Form
-                  {...formItemLayout}
-                  form={form}
-                  name="register"
-                  layout="vertical"
-                  onFinish={onFinish}
-                  ref={formReference}
-                  scrollToFirstError
-                >
-                  <FormItemsRegister />
-  
-  
-                  <Form.Item
-                    name="agreement"
-                    valuePropName="checked"
-                    rules={[
-                      {
-                        validator: (_, value) =>
-                          value ? Promise.resolve() : Promise.reject(new Error('Tienes que aceptar las bases y condiciones')),
-                      },
-                    ]}
-                    {...tailFormItemLayout}
+    <div className="hero-register">
+      <div className="container-fluid">
+        <Row justify='center'>
+              <Col xs={24} lg={12}>
+                <div className="container-form">
+                  <Form
+                    {...formItemLayout}
+                    form={form}
+                    name="register"
+                    layout="vertical"
+                    onFinish={onFinish}
+                    ref={formReference}
+                    scrollToFirstError
                   >
-                    <Checkbox>
-                      Acepto las <a href="">bases y concidiones</a>
-                    </Checkbox>
-                  </Form.Item>
-                    <p>(*) Campos obligatorios</p>
-                  <Form.Item {...tailFormItemLayout}>
-                      <Button type="default" htmlType="button" onClick={deleteFormText}>
-                          Borrar
-                      </Button>                
-                      <Button type="primary" htmlType="submit">
-                          Enviar
-                      </Button>
-                      
-                  </Form.Item>
-                </Form>
-              </div>
-            </Col>
-          
-        </Row>
-        </div>
+                    <FormItemsRegister />
+    
+    
+                    <Form.Item
+                      name="agreement"
+                      valuePropName="checked"
+                      rules={[
+                        {
+                          validator: (_, value) =>
+                            value ? Promise.resolve() : Promise.reject(new Error('Tienes que aceptar las bases y condiciones')),
+                        },
+                      ]}
+                      {...tailFormItemLayout}
+                    >
+                      <Checkbox>
+                        Acepto las <a href="">bases y concidiones</a>
+                      </Checkbox>
+                    </Form.Item>
+                      <p>(*) Campos obligatorios</p>
+                    <Form.Item {...tailFormItemLayout}>
+                        <Button type="default" htmlType="button" onClick={deleteFormText}>
+                            Borrar
+                        </Button>                
+                        <Button type="primary" htmlType="submit">
+                            Enviar
+                        </Button>
+                        
+                    </Form.Item>
+                  </Form>
+                </div>
+              </Col>
+            
+          </Row>
+
+      </div>
+        
+    </div>
      
     );
   };

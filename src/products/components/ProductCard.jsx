@@ -12,6 +12,7 @@ export const ProductCard = ({
     description,
     price,
     product,
+    img
  }) => {
 
   const auth = useAuth();
@@ -19,17 +20,21 @@ export const ProductCard = ({
 
   return (
       <>
-      {product.active === false ? '' : 
-        <Card
-          key={_id}
-          hoverable
-          style={{ width: 240 }}
-        >
-          <Meta title={name} description={description} />
-          <p>Precio: ${price}</p>
-          <Button onClick={() => cart.addItemToCart( product  )} type="primary" >Añadir al Carrito</Button>
-        </Card>
-      }
+      <div className="card-container">
+        {product.active === false ? '' : 
+          <Card
+            key={_id}
+            hoverable
+            style={{ width: 240 }}
+            cover={<img alt="example" src={img} />}
+          >
+            <Meta title={name} description={description} />
+            <p>Precio: ${price}</p>
+            <Button onClick={() => cart.addItemToCart( product  )} type="primary" className='btn-second' >Añadir al Carrito</Button>
+          </Card>
+        }
+      </div>
+      
     </>
   )
 }
