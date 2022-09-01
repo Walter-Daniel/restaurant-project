@@ -1,64 +1,62 @@
-
-
-import { Space, Table, Tag, Button, Tooltip } from 'antd';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { ModalForm } from '../components/ModalForm';
+import { Space, Table, Tag, Button, Tooltip, List, Avatar, Typography } from 'antd';
+import { DeleteOutlined, EditOutlined} from '@ant-design/icons';
+import { ModalProduct } from './ModalProduct';
+import { CreateProduct } from './CRUD/CreateProduct';
 const { Column, ColumnGroup } = Table;
+const { Text } = Typography;
 
-export const ProductsTable = ({ products }) => {
-
-  const columns = [
-    {
-      title: 'Nombre',
-      width: 150,
-      dataIndex: 'name',
-      key: 'name',
-      fixed: 'left',
-    },
-    {
-      title: 'Descripción',
-      dataIndex: 'description',
-      key: 'description',
-    },
-    {
-      title: 'Precio',
-      dataIndex: 'price',
-      key: 'price',
-    },
-    {
-      title: 'ID',
-      dataIndex: '_id',
-      key: '_id',
-    },
-    {
-      title: 'Acciones',
-      key: 'action',
-      fixed: 'right',
-      width: 110,
-      render: (_, record) => (
-        <Space size="middle">
-          <Tooltip title='Borrar Usuario'>
-            <Button type='primary' danger shape='circle' icon={<DeleteOutlined />} onClick={() => deleteUser(record._id)}/>
-          </Tooltip>
-          <Tooltip title='Editar Usuario'>
-                  <Button shape='circle' icon={<EditOutlined />} onClick={() => editUser(record._id)} />
-          </Tooltip>
-        </Space>
-      )
-    },
-  ];
+export const ProductsTable = ({ products, product,  editProduct, closeModal, isModalVisible, deleteProduct, createProduct, isModalCreateVisible, closeModalCreate}) => {
 
   return (
     <>
-      {/* <ModalForm user={user}  closeModal={closeModal} isModalVisible={isModalVisible}/> */}
+      <ModalProduct product={product}  closeModal={closeModal} isModalVisible={isModalVisible}/>
+      <CreateProduct product={product}  closeModalCreate={closeModalCreate} isModalCreateVisible={isModalCreateVisible}/>
+      <div className="div-boton">
+        <Button  className='btn-second' onClick={() => createProduct() }> Agregar Producto</Button>
+      </div>
 
-        <Table
-            columns={columns}
-            dataSource={products}
-            scroll={{
-              x: 1300,
+      <div className="layout-home">
+        <List
+            itemLayout="vertical"
+            size="large"
+            pagination={{
+              pageSize: 10,
             }}
+            dataSource={products}
+            renderItem={item => (
+              <List.Item
+                key={item.title}
+                extra={
+                  <Space >
+                    <Tooltip title='Borrar Usuario'>
+                      <Button type='primary' danger shape='circle' icon={<DeleteOutlined />} onClick={() => deleteProduct(item._id)}/>
+                    </Tooltip>
+                    <Tooltip title='Editar Usuario'>
+                            <Button shape='circle' icon={<EditOutlined />} onClick={() => editProduct(item._id)} />
+                    </Tooltip>
+                </Space>
+                }
+                price={item.price}
+                
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src='../../../assets/images/sider/admin-product.png' />}
+                  title={item.name}
+                  description={item.description}
+                  price={item.price}
+                />
+                <div className="list-product">
+                  <Text>Categoría: {item.category.name}</Text>
+                  <Text strong>Precio: ${item.price}</Text> 
+                  <div>
+                  <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}
+
+                  </div>
+                </div>
+              </List.Item>
+            )}
           />
+      </div>
         
     </>
   )

@@ -22,6 +22,7 @@
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 15px;
+    overflow: hidden;
   }
     
   .ant-layout {
@@ -251,23 +252,12 @@
     } 
 }
 .ant-drawer-title {
-    color: #fff;
+    color: var(--color-2);
     text-transform: uppercase;
     text-align: end;
     font-size: 24px;
 }
-.ant-btn-primary-pag {
-    color: #fff;
-    border-color: var(--color-5);
-    background: var(--color-5);
-    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
-    box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
-}
-.ant-btn-primary-pag:hover {
-    background: #fff;
-    color: var(--color-5);
-    border-color: #fff;
-}
+
 /* .anticon svg {
     color: #fff;
 } */
@@ -320,20 +310,35 @@
   margin: 16px;
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* CARDDDDDDDDDDDD */
+
+.card-container {
+  padding-bottom: 1rem;
+}
     /* hero */
   
-  .hero {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/images/hero/food-hero.jpg);
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 100vh;
-      background-size: cover;
-      position: relative;
-  }
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/images/hero/food-hero.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+.hero-register {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/images/hero/food-hero2.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+
   
-  .hero-img img {
-    width: 90%;
-  }
+.hero-img img {
+  width: 90%;
+}
 
   .heroBlock {
     background: url('/assets/images/hero/original2.webp') no-repeat;
@@ -389,17 +394,17 @@
     
     
     text-transform: uppercase;
-    color: #fafafa;
+    color: var(--color-2);
     
     /* position: absolute;
     color: #fafafa; */
   }
-  .ant-drawer-header {
+  /* .ant-drawer-header {
     background: var(--color-5);
   }
   .ant-drawer-content {
     background: var(--color-5);
-  }
+  } */
   .heroText h1 {
     font-size: 3rem;
     color: black;
@@ -449,20 +454,27 @@
       display: block;
     }
   }
-  
 
-.logo {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
 
   
   /* BUTTON */
+
+.ant-btn-primary-pag {
+    color: #fff;
+    border-color: var(--color-5);
+    background: var(--color-5);
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+}
+.ant-btn-primary-pag:hover {
+    background: #fff;
+    color: var(--color-5);
+    border-color: #fff;
+}
   
 .btn-second {
   margin-left: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 5%;
   color: var(--color-2);
   border-color: var(--color-6);
@@ -470,12 +482,13 @@
   text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
   box-shadow: 0 2px 0 rgb(0 0 0 / 5%); 
 }
-.btn-second:hover {
+.btn-second:hover,
+.btn-second:focus {
   color: var(--color-2);
   border-color: var(--color-6);
   background: var(--color-6);
-  
 }
+
 
 /* Card PRoduct******************************************************* */
 .card-product {
@@ -503,6 +516,9 @@
   position: relative;
   top: -15px;
 }
+.cart-menu {
+  display: flex;
+}
 
 /* Login******************************************************************************************* */
 
@@ -512,19 +528,32 @@
 }
 
 .layout-home {
-  margin-top: 7rem;
+  padding-top: 1.5rem;
   min-height: 80vh;
+  background-color: var(--color-white);
+  padding-bottom: 1rem;
 }
 .title-layout {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5rem;
 }
 .title-layout img {
-  height: 6rem;
+  height: 4rem;
+}
+@media (min-width: 768px) { 
+  .title-layout img {
+    height: 6rem;
+  }
 }
 .title-layout h1 {
-  font-size: 3rem;
+  font-size: 1.8rem;
+}
+@media (min-width: 768px) { 
+  .title-layout h1 {
+    font-size: 3rem;
+  }
 }
 
 /* REGISTER************** */
@@ -559,6 +588,14 @@
   text-transform: uppercase;
   margin: 0 0 20px;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  height: 2.5rem;
+}
 
 .footer .fas {
   color: var(--color-2);
@@ -592,10 +629,21 @@
   color: var(--color-2);
 }
 
-.logo img {
-  height: 4rem;
+
+
+
+/********************* ADMINISTRACION ******************/
+.ant-list-split .ant-list-item {
+  border-bottom: 1px solid #cbc9c9;
 }
-.logo {
+.list-product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-boton {
+  margin: 1.5rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 }

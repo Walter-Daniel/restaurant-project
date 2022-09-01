@@ -1,22 +1,11 @@
-import { Col, Row } from 'antd';
-import { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { Row } from 'antd';
 import { getProductByCategory } from '../helpers/getProductByCategory'
 import { ProductCard } from './ProductCard';
 
-export const ProductsList = ({ category }) => {
+export const ProductsList = ({ category, img }) => {
 
-    const products = getProductByCategory( category );
-    const auth = useAuth();
-    const setOrden = auth.setOrden
-    const [cart, setCart] = useState([])
-    const handleClick = (item) => {
-      setCart([...cart, item])
-      localStorage.setItem('productInCart', JSON.stringify(cart));
-      setOrden(cart)
-      console.log(cart)
-    }
-    
+    const products = getProductByCategory( category ); 
+ 
   return (
     <div>
         <Row className='card-product'>
@@ -24,8 +13,9 @@ export const ProductsList = ({ category }) => {
                     products.map( product => (
                         <ProductCard key={product._id}
                                      product={product}
+                                     img={img}
                                      {...product}
-                                     handleClick={handleClick} /> ))
+                                     /> ))
                 }
 
         </Row>

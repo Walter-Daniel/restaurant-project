@@ -1,80 +1,57 @@
 
 
-import { Space, Table, Tag, Button, Tooltip } from 'antd';
+import { Space, Table, Tag, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { ModalForm } from '../components/ModalForm';
 const { Column, ColumnGroup } = Table;
+const { Text } = Typography;
 
-export const UsersList = ({ users, deleteUser, editUser, user, closeModal, isModalVisible }) => {
-
-  const columns = [
-    {
-      title: 'Usuario',
-      width: 150,
-      dataIndex: 'fullName',
-      key: 'fullName',
-      fixed: 'left',
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-    },
-    {
-      title: 'ID',
-      dataIndex: '_id',
-      key: '_id',
-    },
-    {
-      title: 'Acciones',
-      key: 'action',
-      fixed: 'right',
-      width: 110,
-      render: (_, record) => (
-        <Space size="middle">
-          <Tooltip title='Borrar Usuario'>
-            <Button type='primary' danger shape='circle' icon={<DeleteOutlined />} onClick={() => deleteUser(record._id)}/>
-          </Tooltip>
-          <Tooltip title='Editar Usuario'>
-                  <Button shape='circle' icon={<EditOutlined />} onClick={() => editUser(record._id)} />
-          </Tooltip>
-        </Space>
-      )
-    },
-  ];
+export const UsersList = ({ users, deleteUser, editUser, user, closeModal, isModalVisible, setUsers }) => {
 
   return (
     <>
-      {/* <Button type='primary'>Agregar un nuevo usuario</Button> */}
-      <ModalForm user={user}  closeModal={closeModal} isModalVisible={isModalVisible}/>
-      {/* <Table dataSource={users}>       
-          <Column title="ID" dataIndex="_id" key="_id" />
-          <Column title="Usuario" dataIndex="fullName" key="fullName" />
-          <Column title="Correo" dataIndex="email" key="email" />
-          <Column
-            title="Acciones"
-            key="action"
-            render={(_, record) => (
-              <Space size="middle">
-                <Tooltip title='Borrar Usuario'>
-                  <Button type='primary' danger shape='circle' icon={<DeleteOutlined />} onClick={() => deleteUser(record._id)}/>
-                </Tooltip>
-                <Tooltip title='Editar Usuario'>
-                        <Button shape='circle' icon={<EditOutlined />} onClick={() => editUser(record._id)} />
-                </Tooltip>
-              </Space>
+
+      <ModalForm user={user}  closeModal={closeModal} isModalVisible={isModalVisible} setUsers={setUsers} users={users}/>
+    
+        <div className="layout-home">
+        <List
+            itemLayout="vertical"
+            size="large"
+            pagination={{
+              pageSize: 10,
+            }}
+            dataSource={users}
+            renderItem={item => (
+              <List.Item
+                key={item.title}
+                extra={
+                  <Space >
+                    <Tooltip title='Borrar Usuario'>
+                      <Button type='primary' danger shape='circle' icon={<DeleteOutlined />} onClick={() => deleteUser(item._id)}/>
+                    </Tooltip>
+                    <Tooltip title='Editar Usuario'>
+                            <Button shape='circle' icon={<EditOutlined />} onClick={() => editUser(item._id)} />
+                    </Tooltip>
+                </Space>
+                }
+                price={item.price}
+                
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src='../../../assets/images/sider/user (2).png' />}
+                  title={item._id}
+                  description={item.fullName}
+                />
+                <div className="list-product">
+                  <Text>Email: {item.email}</Text>
+                    <div>
+                      <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}
+                    </div>
+                </div>
+              </List.Item>
             )}
           />
-        </Table> */}
-
-        <Table
-            columns={columns}
-            dataSource={users}
-            scroll={{
-              x: 1300,
-            }}
-          />
-        
+      </div>
     </>
   )
 }

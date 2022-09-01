@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             const response = await axios.post( URL , formData);
             const newUser = response.data.user;
             const newToken = response.data.token;
-            const role = response.data.user.role
+            const role = response.data.user.role;
             setRole(role)
             console.log(role)
             setUser( newUser )
@@ -43,14 +43,12 @@ export const AuthProvider = ({ children }) => {
                          Authorization: 'Bearer ' + newToken 
                         }
             })
-            console.log(newProduct.data);
-            localStorage.setItem('product', JSON.stringify(newProduct));
             setProduct( newProduct )
             openNotification('Login correcto', 'Inicio de sesión exitoso', 'success')
 
            role === 'USER_ROLE' ? navigation('/') : navigation('/users')
             
-        } catch (error) {
+        } catch (error) {  
             openNotification('Login incorrecto', 'Asegurese de colocar de manera correcta sus datos', 'error')
         }
     }
@@ -66,11 +64,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logout = () => {
-        console.log('Funcion de logout en contexto')
-        setUser(null)
-        setToken(null)
-        localStorage.removeItem('user')
-        localStorage.removeItem('token')
+        setUser(null);
+        setToken(null);
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        navigation('/login')
     }
 
     

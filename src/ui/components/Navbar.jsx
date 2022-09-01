@@ -1,14 +1,27 @@
-import { Anchor, Drawer, Button, Typography, List, Avatar} from 'antd';
 import { useAuth } from '../../context/AuthContext';
-import { NavLink } from "react-router-dom";
-import { LoginOutlined, LogoutOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { Link, NavLink } from "react-router-dom";
+import { LoginOutlined, LogoutOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { ItemCart } from './CartItems/ItemCart';
+import { AuthCart } from './CartItems/AuthCart';
+import { Sidebar } from './Sidebar';
+import { useState } from 'react';
+import { Button, Drawer } from 'antd';
 
-const { Text } = Typography;
-const { Link } = Anchor;
 
-export function Navbar({set}) {
+
+
+export function Navbar() {
   
   const auth = useAuth();
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
 
   return (
     <>
@@ -16,19 +29,28 @@ export function Navbar({set}) {
       <div className="container-fluid">
         <div className="header">
           <div className="logo">
-            <a href="/">Bon Appétit</a>
+            <img src="/assets/images/decoracion/logo-header.png" alt="logo sombrero y bigotes" />
+            <Link to="/">Bon Appétit</Link>
           </div>
           <div className='item-login-logout'>
-          { auth.user ?
-                    <>
-                      <Text strong>Buenas tardes {auth.user.fullName} !</Text>
-                      <div className="cart">
-                        <a href='/shop'><ShoppingCartOutlined /></a>
-                        <span>0</span>
-                      </div>
-                    </>
-                          : ''
-        }
+            { auth.user ? ( <div className='cart-menu'>
+                                <AuthCart />
+                                {/* <div className="mobileVisible">
+                                  <Button type="primary" className='btn-second' onClick={showDrawer}>
+                                  <MenuUnfoldOutlined />
+                                  </Button>
+                                </div> */}
+                            </div>)
+                        : '' }
+            <div className="mobileVisible">
+                                  <Button type="primary" className='btn-second' onClick={showDrawer}>
+                                  <MenuUnfoldOutlined />
+                                  </Button>
+                                </div>
+            <Drawer title="Menú" placement="left" onClose={onClose} visible={visible} >
+              <Sidebar />
+            </Drawer>
+          
           </div>                
         </div>
       </div>

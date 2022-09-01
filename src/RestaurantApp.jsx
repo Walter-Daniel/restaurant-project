@@ -1,6 +1,7 @@
 import { Layout } from 'antd';
 import { useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import { ProductsRoutes } from './products';
 import { FooterComponent, Navbar, Sidebar } from "./ui";
 
@@ -12,27 +13,26 @@ export const RestaurantApp = () => {
 
   return (
     <AuthProvider>
-      <Layout className='mainLayout'>
-          <Sider  breakpoint="lg"
-                  collapsedWidth="0"
-                  style={{
-                    position: 'sticky',
-                    }}
-                  >
-            <Sidebar />
-          </Sider>
-          <Layout>
+      <CartProvider>
+        <Layout className='mainLayout'> 
           <Header>
             <Navbar />  
           </Header>
-          <Content> 
-            <ProductsRoutes />
-          </Content>
+          <Layout>
+          <div className="mobileHidden">
+            <Sider >
+              <Sidebar />
+            </Sider>
+           </div> 
+            <Content> 
+              <ProductsRoutes />
+            </Content>   
+          </Layout>
           <Footer>
-            <FooterComponent />
-          </Footer>     
+              <FooterComponent />
+            </Footer> 
         </Layout>
-      </Layout>
+      </CartProvider>
     </AuthProvider>
   )
 }
