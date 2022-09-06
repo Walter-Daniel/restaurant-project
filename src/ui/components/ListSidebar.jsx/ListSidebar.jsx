@@ -3,19 +3,19 @@ import { Avatar, List } from "antd";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import img from '../../../../assets/images/sider/pizza.png';
+import images from "./images";
 
 
 export const ListSidebar = () => {
     const auth = useAuth();
     const currentUser = auth.user;
-    const images = '../../../../assets'
 
     const data = [
         {
           title: 'Empanadas',
           path: 'empanadas',
           protected: true,
-          img: `${images}/empanada.png`
+          img: images.empanada
         },
         {
           title: 'Pizzas',
