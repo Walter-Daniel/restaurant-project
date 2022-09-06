@@ -1,4 +1,5 @@
-import { FacebookOutlined, TwitterOutlined, InstagramOutlined, LinkedinOutlined } from "@ant-design/icons"
+import { FacebookOutlined, TwitterOutlined, InstagramOutlined, LinkedinOutlined } from "@ant-design/icons";
+import img from '../../../assets/images/decoracion/logo.png'
 
 
 export const FooterComponent = () => {
@@ -6,7 +7,7 @@ export const FooterComponent = () => {
     <div className="container-fluid">
         <div className="footer">
             <div className="logo">
-                <img src="/assets/images/decoracion/logo.png" alt="logo de la marca, un sombrero y bigotes" />
+                <img src={img} alt="logo de la marca, un sombrero y bigotes" />
                 <a href="/">Bon appétit</a>
             </div>
             <ul>

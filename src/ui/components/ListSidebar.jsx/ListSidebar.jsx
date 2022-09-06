@@ -2,6 +2,7 @@ import { LoginOutlined, LogoutOutlined, PlusCircleOutlined } from "@ant-design/i
 import { Avatar, List } from "antd"
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../../../context/AuthContext";
+import images from '../../../../assets/images/sider/'
 
 export const ListSidebar = () => {
     const auth = useAuth();
@@ -13,7 +14,7 @@ export const ListSidebar = () => {
           title: 'Empanadas',
           path: 'empanadas',
           protected: true,
-          img: '../../../../assets/images/sider/empanada.png'
+          img: `${images}/empanada.png`
         },
         {
           title: 'Pizzas',
