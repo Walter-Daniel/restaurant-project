@@ -1,6 +1,5 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useCart } from '../../../context/CartContext';
 

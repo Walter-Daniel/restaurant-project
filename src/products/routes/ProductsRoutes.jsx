@@ -6,6 +6,7 @@ import { Register } from "../../auth/pages/Register";
 import {AdminRoutes, AppRouter} from "../../router";
 import { Users } from "../../admin/Users";
 import { Products } from "../../admin/products/Products";
+import { OrderPage } from "../../admin/Order/OrderPage";
 
 
 
@@ -24,6 +25,7 @@ export const ProductsRoutes = () => {
             
             <Route path="users" element={<AdminRoutes><Users /></AdminRoutes>} />
             <Route path="products" element={<AdminRoutes><Products /></AdminRoutes>} />
+            <Route path="orders" element={<AdminRoutes><OrderPage /></AdminRoutes>} />
        </Routes>
     </>
   )

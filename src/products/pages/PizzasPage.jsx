@@ -1,6 +1,5 @@
 import { ProductsList } from "../components/ProductsList"
 
-
 export const PizzasPage = () => {
   const img = '../../../assets/images/carts/pizza.webp'
   return (

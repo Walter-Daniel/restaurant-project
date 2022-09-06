@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Title } from "../components";
 import { notification } from 'antd';
@@ -33,7 +32,7 @@ export const Users = () => {
 
     useEffect(() => { 
       getUsers();
-    }, [])
+    }, [editUser])
     
 
     async function getUsers() {
@@ -68,7 +67,6 @@ export const Users = () => {
       try {
         const EditUser = users.find( user => user._id === id);
         setUserToEdit(EditUser);
-        console.log('edit', id)
         openModal();
         
       } catch (error) {
@@ -81,7 +79,7 @@ export const Users = () => {
         <Title title={title} />
         <hr />
         <h2>Cantidad total de usuarios: {users.length}</h2>
-        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} user ={userToEdit} closeModal={closeModal} isModalVisible={isModalVisible} setUsers={setUsers} />
+        <UsersList users={users} deleteUser={deleteUser} editUser={editUser} user ={userToEdit} closeModal={closeModal} isModalVisible={isModalVisible} setUsers={setUsers} getUsers={getUsers} />
     </>
   )
 }

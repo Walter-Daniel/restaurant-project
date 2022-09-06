@@ -647,3 +647,26 @@
   justify-content: center;
   align-items: center;
 }
+.list-product{
+  display: flex;
+  flex-direction: column;
+  list-style-type: none!important;
+}
+ul ul {
+  list-style-type: none;
+}
+
+.order-element {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) { 
+  .order-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+.ant-drawer-content-wrapper {
+  width: 270px !important;
+}

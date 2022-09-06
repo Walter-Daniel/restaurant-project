@@ -1,5 +1,4 @@
 import { Layout } from 'antd';
-import { useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ProductsRoutes } from './products';

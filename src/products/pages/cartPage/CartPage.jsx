@@ -1,5 +1,4 @@
 import { Button } from 'antd';
-import React from 'react'
 import { Title } from '../../../admin/components';
 import { useCart } from '../../../context/CartContext';
 import { CartContent } from './CartContent';
@@ -23,7 +22,7 @@ export const CartPage = () => {
                                         : <CartContent /> }
             <h3>Total: ${total}</h3>
             <h3>Cantidad total: {totalItems}</h3>
-            <Button className='btn-second' onClick={() => cart.purchaseOrder(totalItems)}>Comprar</Button>
+            <Button className='btn-second' onClick={() => cart.purchaseOrder(total)}>Comprar</Button>
           </div>
         </div>
     </>

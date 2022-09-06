@@ -2,9 +2,6 @@ import { LoginOutlined, LogoutOutlined, PlusCircleOutlined } from "@ant-design/i
 import { Avatar, List } from "antd"
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../../../context/AuthContext";
-import { Typography } from 'antd';
-import { Time } from "../Time";
-const { Text } = Typography;
 
 export const ListSidebar = () => {
     const auth = useAuth();
@@ -45,7 +42,7 @@ export const ListSidebar = () => {
         },
         {
           title: 'Ordenes',
-          path: '/cart',
+          path: '/orders',
           protected: true,
           img: '../../../assets/images/sider/shopping-cart.png'
         }
