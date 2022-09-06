@@ -1,8 +1,8 @@
 import { ProductsList } from "../components/ProductsList"
+import imagen from '../../../assets/images/carts/empanadas.jpg';
 
 export const EmpanadasPage = () => {
 
-  const img = '../../../assets/images/carts/empanadas.jpg'
   return (
     <div className='layout-home'>
       <div className="container-fluid">
@@ -12,7 +12,7 @@ export const EmpanadasPage = () => {
           <img src="/assets/images/decoracion/icon-right.png" alt="nube izquiera" />
         </div>
         <hr />
-      <ProductsList category='Empanadas' img={img} />
+      <ProductsList category='Empanadas' img={imagen} />
       </div>
     </div>
   )
