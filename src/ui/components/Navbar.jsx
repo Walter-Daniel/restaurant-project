@@ -5,7 +5,7 @@ import { AuthCart } from './CartItems/AuthCart';
 import { Sidebar } from './Sidebar';
 import { useState } from 'react';
 import { Button, Drawer } from 'antd';
-
+import img from '../../../assets/images/decoracion/logo-header.png'
 
 
 
@@ -28,7 +28,7 @@ export function Navbar() {
       <div className="container-fluid">
         <div className="header">
           <div className="logo">
-            <img src="/assets/images/decoracion/logo-header.png" alt="logo sombrero y bigotes" />
+            <img src={img} alt="logo sombrero y bigotes" />
             <Link to="/">Bon Appétit</Link>
           </div>
           <div className='item-login-logout'>
