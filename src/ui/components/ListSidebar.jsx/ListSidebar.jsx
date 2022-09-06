@@ -6,25 +6,26 @@ import { useAuth } from "../../../context/AuthContext";
 export const ListSidebar = () => {
     const auth = useAuth();
     const currentUser = auth.user;
+    const images = '../../../../assets'
 
     const data = [
         {
           title: 'Empanadas',
           path: 'empanadas',
           protected: true,
-          img: '../../../assets/images/sider/empanada.png'
+          img: '../../../../assets/images/sider/empanada.png'
         },
         {
           title: 'Pizzas',
           path: '/pizza',
           protected: true,
-          img: '../../../assets/images/sider/pizza.png'
+          img: '../../../../assets/images/sider/pizza.png'
         },
         {
           title: 'Sandwiches',
           path: '/sandwiches',
           protected: true,
-          img: '../../../assets/images/sider/sandwich (1).png'
+          img: '../../../../assets/images/sider/sandwich (1).png'
         },
       ];
     const linkAdmin = [

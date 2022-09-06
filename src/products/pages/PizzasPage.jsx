@@ -1,18 +1,16 @@
-import { ProductsList } from "../components/ProductsList"
+import { Title } from "../../admin/components/Title";
+import { ProductsList } from '../components/ProductsList';
+import imagen from '../../../assets/images/carts/pizza.webp';
+
 
 export const PizzasPage = () => {
-  const img = '../../../assets/images/carts/pizza.webp'
+  const title = 'Pizzas'
   return (
     <div className='layout-home'>
       <div className="container-fluid">
-        <div className="title-layout">
-          <img src="/assets/images/decoracion/icon-left.png" alt="nube izquiera" />
-            <h1>Pizzas</h1>
-          <img src="/assets/images/decoracion/icon-right.png" alt="nube izquiera" />
-        </div>
-        
+        <Title title={title} />
         <hr />
-        <ProductsList category='Pizzas' img={img} />
+        <ProductsList category='Pizzas' img={imagen} />
       </div>
     </div>
   )

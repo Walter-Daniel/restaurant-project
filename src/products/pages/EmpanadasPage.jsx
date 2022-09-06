@@ -1,16 +1,14 @@
 import { ProductsList } from "../components/ProductsList"
 import imagen from '../../../assets/images/carts/empanadas.jpg';
+import { Title } from "../../admin/components/Title";
 
 export const EmpanadasPage = () => {
+  const title = 'Empanadas'
 
   return (
     <div className='layout-home'>
       <div className="container-fluid">
-        <div className="title-layout">
-          <img src="/assets/images/decoracion/icon-left.png" alt="nube izquiera" />
-            <h1>Empanadas</h1>
-          <img src="/assets/images/decoracion/icon-right.png" alt="nube izquiera" />
-        </div>
+        <Title title={title} />
         <hr />
       <ProductsList category='Empanadas' img={imagen} />
       </div>
