@@ -1,8 +1,9 @@
 import { LoginOutlined, LogoutOutlined, PlusCircleOutlined } from "@ant-design/icons";
-import { Avatar, List } from "antd"
-import { NavLink } from "react-router-dom"
+import { Avatar, List } from "antd";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
-import images from '../../../../assets/images/sider/'
+import img from '../../../../assets/images/sider/pizza.png';
+
 
 export const ListSidebar = () => {
     const auth = useAuth();
@@ -20,7 +21,7 @@ export const ListSidebar = () => {
           title: 'Pizzas',
           path: '/pizza',
           protected: true,
-          img: '../../../../assets/images/sider/pizza.png'
+          img: img
         },
         {
           title: 'Sandwiches',
