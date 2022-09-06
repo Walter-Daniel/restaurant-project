@@ -1,9 +1,8 @@
 import { Layout } from 'antd';
 import { Login } from './Login';
-import { Hero } from './Hero';
 
-const { Header, Content, Footer } = Layout;
 
+const { Content } = Layout;
 
 export const Welcome = () => {
   return (

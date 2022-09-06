@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import { FormItemsRegister } from "../../auth";
-import { useAuth } from "../../context/AuthContext";
+import { useEffect} from "react";
 import { Button, Form, Input, InputNumber, Modal, Radio } from "antd"
-import axios from "axios";
-const { confirm } = Modal;
+
 const { TextArea } = Input;
 
 const layout = {
@@ -109,11 +106,6 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
             required: true,
             message: 'Por favor ingrese un valor entre 1 y 9999!',
           },
-          // {
-          //   min: 1,
-          //   max: 9999, 
-          //   message: 'El valor no debe ser menor que ${min} y superior a ${max}',
-          // },
         ]}
       >
         <InputNumber min={1} max={9999}/>

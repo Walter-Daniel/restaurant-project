@@ -1,8 +1,7 @@
-import { Space, Table, Tag, Button, Tooltip, List, Avatar, Typography } from 'antd';
+import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import { DeleteOutlined, EditOutlined} from '@ant-design/icons';
 import { ModalProduct } from './ModalProduct';
 import { CreateProduct } from './CRUD/CreateProduct';
-const { Column, ColumnGroup } = Table;
 const { Text } = Typography;
 
 export const ProductsTable = ({ products, product,  editProduct, closeModal, isModalVisible, deleteProduct, createProduct, isModalCreateVisible, closeModalCreate}) => {

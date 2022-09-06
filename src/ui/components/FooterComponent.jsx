@@ -1,5 +1,4 @@
 import { FacebookOutlined, TwitterOutlined, InstagramOutlined, LinkedinOutlined } from "@ant-design/icons"
-import Title from "antd/lib/skeleton/Title"
 
 
 export const FooterComponent = () => {

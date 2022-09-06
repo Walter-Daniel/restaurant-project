@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
-import { FormItemsRegister } from "../../auth";
+
 import { useAuth } from "../../context/AuthContext";
-import { Button, Form, Input, Modal, Radio } from "antd"
+import { Form, Modal } from "antd"
 import axios from "axios";
 import { ModalComponent } from "./ModalComponent";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 const { confirm } = Modal;
 
-const layout = {
-  labelCol:{
-    span: 8
-  },
-  wrapperCol: {
-    span: 24
-  }
-};
 
 const URL = 'http://rolling-food.herokuapp.com/api/product';
 

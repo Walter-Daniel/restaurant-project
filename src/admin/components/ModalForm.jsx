@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { FormItemsRegister } from "../../auth";
+import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Button, Form, Input, Modal, Radio } from "antd"
 import axios from "axios";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+
 const { confirm } = Modal;
 
 const layout = {
@@ -16,41 +17,34 @@ const layout = {
 
 const URL = 'http://rolling-food.herokuapp.com/api/user';
 
-export const ModalForm = ({ closeModal, user, isModalVisible }) => {
-
+export const ModalForm = ({ closeModal, user, isModalVisible, getUsers }) => {
 
     const auth = useAuth();
     const [form] = Form.useForm();
     
     useEffect(() => {
       form.setFieldsValue( user )
-    }, [user])
-    
-    const showConfirm = () => {
-      confirm({
-        title: 'Quiéres finalizar la edición?',
-        icon: <ExclamationCircleOutlined />,
-        content: 'Al darle OK se guardaran los cambios realizados',
-        
-        onOk() {
-          form.resetFields();
-          openCloseModal();
-        },
-        
-        onCancel() {
-          console.log('Cancel');
-        },
-      });
-    };
-    const onFinish = async(values) => {
+    }, [user]);
+
+    const onFinish = (values) => {
        try {
-        const editUser = await axios.put(`${URL}/${user._id}` , values, {
-          headers:  {
-            'Authorization': 'Bearer ' + auth.token
-                    }
-          })
-        form.resetFields();
-        closeModal();
+        confirm({
+          title: 'Quiéres finalizar la edición?',
+          icon: <ExclamationCircleOutlined />,
+          content: 'Al darle OK se guardaran los cambios realizados',
+          
+          async onOk() {
+            const editUser = await axios.put(`${URL}/${user._id}` , values, {
+              headers:  {
+                'Authorization': 'Bearer ' + auth.token
+                        }
+              })
+            console.log(editUser)
+            form.resetFields();
+            closeModal();
+          }
+        });
+       
        } catch (error) {
         console.log(error)
        }
@@ -58,12 +52,13 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
 
   return (
     <Modal visible={ isModalVisible }
-           title= "Crear un nuevo usuario"
+           title= "Editar un usuario"
            destroyOnClose={ true }
            onCancel={ closeModal }
+  
            footer={[
          
-              <Form.Item >
+              <Form.Item key='footer-modal-edit-user'>
                 <Button type="default" htmlType="button" onClick={closeModal}>
                     Cerrar
                 </Button>                
@@ -78,6 +73,7 @@ export const ModalForm = ({ closeModal, user, isModalVisible }) => {
             onFinish={onFinish}
             layout="vertical"
             id="myForm"
+
       >
        <Form.Item
         name="fullName"

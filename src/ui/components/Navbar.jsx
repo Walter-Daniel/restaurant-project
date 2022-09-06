@@ -1,7 +1,6 @@
 import { useAuth } from '../../context/AuthContext';
-import { Link, NavLink } from "react-router-dom";
-import { LoginOutlined, LogoutOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { ItemCart } from './CartItems/ItemCart';
+import { Link } from "react-router-dom";
+import { MenuUnfoldOutlined } from '@ant-design/icons';
 import { AuthCart } from './CartItems/AuthCart';
 import { Sidebar } from './Sidebar';
 import { useState } from 'react';

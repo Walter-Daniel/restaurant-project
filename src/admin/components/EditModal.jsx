@@ -1,6 +1,5 @@
-import { Button, Form, Input, Modal, Radio } from "antd"
+import { Button, Form, Input, Modal } from "antd"
 import { useEffect } from "react";
-import { FormItemsRegister } from "../../auth";
 import { useAuth } from "../../context/AuthContext";
 
 const layout = {

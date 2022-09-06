@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState  } from "react";
 import { notification, Modal } from 'antd';
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
@@ -43,7 +42,7 @@ export const Products = () => {
 
     useEffect(() => {
       getProducts();
-    }, [])
+    }, [editProduct, createProduct])
     
 
     async function getProducts() {
@@ -54,8 +53,6 @@ export const Products = () => {
         })
         const productList= productsDB.data.products;
         setProducts(productList)
-        console.log(productList)
-
     };
 
     async function deleteProduct(id) {
@@ -94,7 +91,6 @@ export const Products = () => {
        
         const newProduct = products.find( product => product._id === id);
         setProductToEdit(newProduct);
-        console.log('edit product', id);
         openModal();
         
       } catch (error) {

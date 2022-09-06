@@ -64,8 +64,7 @@ export const CartProvider= ({ children }) => {
         }
     };
 
-    const purchaseOrder = (totalItems) => {
-        const amount= totalItems;
+    const purchaseOrder = (total) => {
         let products = [];
             cartItems.forEach( product => products.push({
             productId: product._id,
@@ -74,7 +73,7 @@ export const CartProvider= ({ children }) => {
         const order = {
             products,
             user: auth.user._id,
-            amount
+            total
         }; 
         try {            
             confirm({

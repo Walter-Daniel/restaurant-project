@@ -3,7 +3,6 @@ import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import {  MinusCircleOutlined, PlusCircleOutlined} from '@ant-design/icons';
 const { Text } = Typography;
 
-
 export const CartContent = () => {
 
     const cart = useCart();

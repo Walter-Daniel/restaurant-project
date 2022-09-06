@@ -1,11 +1,7 @@
 import {
-    AutoComplete,
-    Cascader,
     Checkbox,
     Col,
-    Form,
-    Input,
-    InputNumber,
+    Form, 
     Row,
     Select,
     Button
@@ -14,7 +10,6 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { FormItemsRegister } from '../components';
   
-  const { Option } = Select;
   
   const formItemLayout = {
     labelCol: {
@@ -67,8 +62,6 @@ import { FormItemsRegister } from '../components';
       },
     },
   };
-
-  const URL = 'http://rolling-food.herokuapp.com/api/auth/register'
   
   export const Register = () => {
     const auth = useAuth();
@@ -78,9 +71,7 @@ import { FormItemsRegister } from '../components';
         auth.register(values)
         form.resetFields();
     }
-  
-    
-    
+ 
     const formReference = createRef();
     const deleteFormText = () => {
       formReference.current.resetFields()
