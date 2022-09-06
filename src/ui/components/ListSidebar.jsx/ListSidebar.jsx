@@ -58,7 +58,7 @@ export const ListSidebar = () => {
             item.protected && !currentUser ? '' : 
 
             <NavLink to={item.path ?? '/'}
-                    className={({ isActive }) => isActive ? 'navLink-active' : undefined}>
+                    className={({ isActive }) => isActive ? 'navLink-active' : ''}>
                 <List.Item>
                     <List.Item.Meta
                     avatar={<img src={item.img} alt={item.title} />}
@@ -82,8 +82,8 @@ export const ListSidebar = () => {
                         </>
                       : 
                         <>
-                          <NavLink to='/Login'
-                                  className={({ isActive }) => isActive ? 'navLink-active' : undefined}>
+                          <NavLink to='/login'
+                                  className={({ isActive }) => isActive ? 'navLink-active' : ''}>
                             <List.Item>
                                 <List.Item.Meta
                                   avatar={<Avatar icon={<LoginOutlined />} />}
@@ -92,7 +92,7 @@ export const ListSidebar = () => {
                             </List.Item>
                           </NavLink>
                           <NavLink to='/register'
-                                  className={({ isActive }) => isActive ? 'navLink-active' : undefined}>
+                                  className={({ isActive }) => isActive ? 'navLink-active' : ''}>
                             <List.Item>
                                 <List.Item.Meta
                                   avatar={<Avatar icon={<PlusCircleOutlined />} />}
@@ -102,9 +102,6 @@ export const ListSidebar = () => {
                           </NavLink>
                         </>
           }
-          {/* <div className="mobileVisible">
-            <Text strong><Time /> {auth.user.fullName} !</Text>
-          </div> */}
         </List>
   )
 }

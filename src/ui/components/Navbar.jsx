@@ -34,11 +34,6 @@ export function Navbar() {
           <div className='item-login-logout'>
             { auth.user ? ( <div className='cart-menu'>
                                 <AuthCart />
-                                {/* <div className="mobileVisible">
-                                  <Button type="primary" className='btn-second' onClick={showDrawer}>
-                                  <MenuUnfoldOutlined />
-                                  </Button>
-                                </div> */}
                             </div>)
                         : '' }
             <div className="mobileVisible">
