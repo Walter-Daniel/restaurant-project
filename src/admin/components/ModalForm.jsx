@@ -39,7 +39,6 @@ export const ModalForm = ({ closeModal, user, isModalVisible}) => {
                 'Authorization': 'Bearer ' + auth.token
                         }
               })
-            console.log(editUser)
             form.resetFields();
             closeModal();
           }

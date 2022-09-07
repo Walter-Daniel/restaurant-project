@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
             const newToken = response.data.token;
             const role = response.data.user.role;
             setRole(role)
-            console.log(role)
             setUser( newUser )
             setToken ( newToken )
             localStorage.setItem('user', JSON.stringify(newUser));
@@ -57,7 +56,6 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await axios.post( URLREGISTER , formData);
             openNotification('Registro Correcto', 'Su información ha sido guardada en nuestra base datos', 'success')
-            console.log(response)
         } catch (error) {
             console.log(error)
         }

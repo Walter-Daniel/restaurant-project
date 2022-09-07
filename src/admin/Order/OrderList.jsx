@@ -3,7 +3,7 @@ import {  EditOutlined } from '@ant-design/icons';
 const { Text } = Typography;
 
 
-export const OrderList = ({orders, deleteOrder, editOrder}) => {
+export const OrderList = ({orders, editOrder}) => {
   return (
     <>
         <div className="layout-home">

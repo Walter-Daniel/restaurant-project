@@ -71,8 +71,7 @@ export const Users = () => {
       console.log('error al editar usuario', error)
       }     
     }
-    const title = 'Usuarios'
-  console.log(userToEdit)
+    const title = 'Usuarios';
   return (
     <>
         <Title title={title} />
