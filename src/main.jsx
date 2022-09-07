@@ -5,10 +5,11 @@ import { RestaurantApp } from './RestaurantApp';
 import 'antd/dist/antd.css';
 import './styles.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
+ReactDOM.createRoot(document.getElementById('root')).
+render(
+  <BrowserRouter>
+   <React.StrictMode>
       <RestaurantApp />
-    </BrowserRouter>
-  </React.StrictMode>
+    </React.StrictMode>
+  </BrowserRouter>
 )
