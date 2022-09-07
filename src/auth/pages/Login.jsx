@@ -6,20 +6,14 @@ import { useAuth } from '../../context/AuthContext';
 export const Login = () => {
     const auth = useAuth();
 
-
     const onFinish = async (formData) => {
-
-        auth.login( formData )
+        auth.login( formData )      
+      };
         
-      };
-      
-    
-      const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-      };
-
-      
-      
+    const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+    };
+     
   return (
     <div className="hero">
         <div className='container-fluid'>
@@ -41,61 +35,60 @@ export const Login = () => {
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
                         >
-                    <Form.Item
-                        label="Correo"
-                        name="email"
-                        rules={[
-                        {
-                            required: true,
-                            type: 'email',
-                            message: 'Por favor ingrese su correo!',
-                        },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
+                        <Form.Item
+                            label="Correo"
+                            name="email"
+                            rules={[
+                            {
+                                required: true,
+                                type: 'email',
+                                message: 'Por favor ingrese su correo!',
+                            },
+                            ]}
+                        >
+                            <Input />
+                        </Form.Item>
 
-                    <Form.Item
-                        label="Password"
-                        name="password"
-                        rules={[
-                        {
-                            required: true,
-                            message: 'Por favor ingrese su contraseña!',
-                        },
-                        {
-                            min: 6,
-                            max: 12, 
-                            message: 'Las contraseña tienen entre ${min} y ${max} caracteres',
-                        },
-                        ]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
+                        <Form.Item
+                            label="Password"
+                            name="password"
+                            rules={[
+                            {
+                                required: true,
+                                message: 'Por favor ingrese su contraseña!',
+                            },
+                            {
+                                min: 6,
+                                max: 12, 
+                                message: 'Las contraseña tienen entre ${min} y ${max} caracteres',
+                            },
+                            ]}
+                        >
+                            <Input.Password />
+                        </Form.Item>
 
-                    <Form.Item
-                        name="remember"
-                        valuePropName="checked"
-                        wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                        }}
-                    >
-                        <Checkbox>Remember me</Checkbox>
-                    </Form.Item>
+                        <Form.Item
+                            name="remember"
+                            valuePropName="checked"
+                            wrapperCol={{
+                            offset: 8,
+                            span: 16,
+                            }}
+                        >
+                            <Checkbox>Remember me</Checkbox>
+                        </Form.Item>
 
-                    <Form.Item
-                        wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                        }}
-                    >
+                        <Form.Item
+                            wrapperCol={{
+                            offset: 8,
+                            span: 16,
+                            }}
+                        >
                         <Button type="primary" htmlType="submit" >
                             Ingresar
                         </Button>
-                    </Form.Item>
+                        </Form.Item>
                     </Form>
-
                 </Col>
             </Row>
         </div>

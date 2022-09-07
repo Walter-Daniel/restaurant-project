@@ -14,7 +14,7 @@ export const ProductsRoutes = () => {
   return (
     <>
         <Routes>
-            <Route path="/" exact element={<AppRouter><Home /></AppRouter>} />
+            <Route path="/*" exact element={<AppRouter><Home /></AppRouter>} />
             <Route path="sandwiches" element={<AppRouter><SandwichesPage /></AppRouter>} />
             <Route path="empanadas" element={<AppRouter><EmpanadasPage /></AppRouter>} />
             <Route path="pizza" element={<AppRouter><PizzasPage /></AppRouter>} />

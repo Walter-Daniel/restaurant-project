@@ -6,8 +6,14 @@ export const AdminRoutes = ({children}) => {
    
    if(!auth.user){
     return <Navigate to='/login' replace />
-   }
-   return (
-     (auth.user.role === 'ADMIN_ROLE') ? children : <Navigate to='/' replace />
-  )
+   };
+
+   if(auth.user.role === 'ADMIN_ROLE') {
+    return children
+   };
+   
+   if(auth.user.role === 'USER_ROLE') {
+    return <Navigate to='/' replace />
+   };
+  
 }
