@@ -17,7 +17,7 @@ const layout = {
 
 const URL = 'http://rolling-food.herokuapp.com/api/user';
 
-export const ModalForm = ({ closeModal, user, isModalVisible, getUsers }) => {
+export const ModalForm = ({ closeModal, user, isModalVisible}) => {
 
     const auth = useAuth();
     const [form] = Form.useForm();

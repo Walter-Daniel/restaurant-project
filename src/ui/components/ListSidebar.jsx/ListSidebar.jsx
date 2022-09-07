@@ -2,7 +2,6 @@ import { LoginOutlined, LogoutOutlined, PlusCircleOutlined } from "@ant-design/i
 import { Avatar, List } from "antd";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
-import img from '../../../../assets/images/sider/pizza.png';
 import images from "./images";
 
 
@@ -21,13 +20,13 @@ export const ListSidebar = () => {
           title: 'Pizzas',
           path: '/pizza',
           protected: true,
-          img: img
+          img: images.pizza
         },
         {
           title: 'Sandwiches',
           path: '/sandwiches',
           protected: true,
-          img: '../../../../assets/images/sider/sandwich (1).png'
+          img: images.sandwich
         },
       ];
     const linkAdmin = [
@@ -35,19 +34,19 @@ export const ListSidebar = () => {
           title: 'Usuarios',
           path: 'users',
           protected: true,
-          img: '../../../assets/images/sider/user(1).png'
+          img: images.user
         },
         {
           title: 'Productos',
           path: '/products',
           protected: true,
-          img: '../../../assets/images/sider/box.png'
+          img: images.box
         },
         {
           title: 'Ordenes',
           path: '/orders',
           protected: true,
-          img: '../../../assets/images/sider/shopping-cart.png'
+          img: images.shopping
         }
       ];
   return (

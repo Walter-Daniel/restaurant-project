@@ -42,7 +42,7 @@ export const Products = () => {
 
     useEffect(() => {
       getProducts();
-    }, [editProduct, createProduct])
+    }, [])
     
 
     async function getProducts() {

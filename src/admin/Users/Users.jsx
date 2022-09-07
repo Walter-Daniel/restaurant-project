@@ -19,7 +19,6 @@ const openNotification = (message, description, type) => {
 export const Users = () => {
     const auth= useAuth();
     const [users, setUsers] = useState([]);
-    const [total, setTotal] = useState(0);
     const [userToEdit, setUserToEdit] = useState(null)
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -32,7 +31,7 @@ export const Users = () => {
 
     useEffect(() => { 
       getUsers();
-    }, [editUser])
+    }, [])
     
 
     async function getUsers() {
@@ -41,7 +40,6 @@ export const Users = () => {
                     'Authorization': 'Bearer ' + auth.token
                 }
         })
-        setTotal(response.data.total)
         const usersDB = response.data.users;
         setUsers(usersDB)
     };
@@ -74,6 +72,7 @@ export const Users = () => {
       }     
     }
     const title = 'Usuarios'
+  console.log(userToEdit)
   return (
     <>
         <Title title={title} />

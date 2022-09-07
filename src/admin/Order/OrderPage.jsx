@@ -23,7 +23,7 @@ export const OrderPage = () => {
 
     useEffect(() => {
         getOrders();
-      }, [editOrder])
+      }, [])
 
     async function getOrders() {
         const OrdersDB = await axios(URL, {

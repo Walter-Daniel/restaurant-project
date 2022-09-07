@@ -1,6 +1,7 @@
 import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { ModalForm } from '../components/ModalForm';
+import img from '../../../assets/images/sider/user-2.png'
 
 const { Text } = Typography;
 
@@ -36,7 +37,7 @@ export const UsersList = ({ users, deleteUser, editUser, user, closeModal, isMod
                   
                 >
                   <List.Item.Meta
-                    avatar={<Avatar src='../../../assets/images/sider/user (2).png' />}
+                    avatar={<Avatar src={img} />}
                     title={item._id}
                     description={item.fullName}
                   />
