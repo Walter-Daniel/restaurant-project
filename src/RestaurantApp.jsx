@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
-import { ProductsRoutes } from './products';
+import { GeneralRoutes } from './router/routes/generalRoutes';
 import { FooterComponent, Navbar, Sidebar } from "./ui";
 
 
@@ -24,7 +24,7 @@ export const RestaurantApp = () => {
             </Sider>
           </div> 
            <Content> 
-            <ProductsRoutes />
+            <GeneralRoutes />
            </Content>   
           </Layout>
           <Footer>

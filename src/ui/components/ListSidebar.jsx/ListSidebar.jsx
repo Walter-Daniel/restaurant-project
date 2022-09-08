@@ -98,7 +98,7 @@ export const ListSidebar = () => {
                             <List.Item>
                                 <List.Item.Meta
                                   avatar={<Avatar icon={<PlusCircleOutlined />} />}
-                                  title='Register'    
+                                  title='Registrarse'    
                                 />
                             </List.Item>
                           </NavLink>
