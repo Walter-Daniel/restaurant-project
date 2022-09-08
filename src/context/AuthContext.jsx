@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
             setProduct( newProduct )
             openNotification('Login correcto', 'Inicio de sesión exitoso', 'success')
 
-           role === 'USER_ROLE' ? navigation('/') : navigation('/users')
+           role === 'USER_ROLE' ? navigation('/', { replace: true }) : navigation('/users', { replace: true })
             
         } catch (error) {  
             openNotification('Login incorrecto', 'Asegurese de colocar de manera correcta sus datos', 'error')
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        navigation('/login')
+        navigation('/login');
     }
 
     

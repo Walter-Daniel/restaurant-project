@@ -18,13 +18,13 @@ export const ListSidebar = () => {
         },
         {
           title: 'Pizzas',
-          path: '/pizza',
+          path: 'pizza',
           protected: true,
           img: images.pizza
         },
         {
           title: 'Sandwiches',
-          path: '/sandwiches',
+          path: 'sandwiches',
           protected: true,
           img: images.sandwich
         },
@@ -38,13 +38,13 @@ export const ListSidebar = () => {
         },
         {
           title: 'Productos',
-          path: '/products',
+          path: 'products',
           protected: true,
           img: images.box
         },
         {
           title: 'Ordenes',
-          path: '/orders',
+          path: 'orders',
           protected: true,
           img: images.shopping
         }
@@ -72,7 +72,7 @@ export const ListSidebar = () => {
 
           { auth.user ?
                         <>
-                          <NavLink to='/login' onClick={() => auth.logout()}>
+                          <NavLink to='login' onClick={() => auth.logout()}>
                               <List.Item>
                                   <List.Item.Meta
                                   avatar={<Avatar icon={<LogoutOutlined />} />}
@@ -84,7 +84,7 @@ export const ListSidebar = () => {
                         </>
                       : 
                         <>
-                          <NavLink to='/login'
+                          <NavLink to='login'
                                   className={({ isActive }) => isActive ? 'navLink-active' : ''}>
                             <List.Item>
                                 <List.Item.Meta
@@ -93,7 +93,7 @@ export const ListSidebar = () => {
                                 />
                             </List.Item>
                           </NavLink>
-                          <NavLink to='/register'
+                          <NavLink to='register'
                                   className={({ isActive }) => isActive ? 'navLink-active' : ''}>
                             <List.Item>
                                 <List.Item.Meta

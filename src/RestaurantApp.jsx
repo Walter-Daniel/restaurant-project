@@ -22,14 +22,14 @@ export const RestaurantApp = () => {
             <Sider >
               <Sidebar />
             </Sider>
-           </div> 
-            <Content> 
-              <ProductsRoutes />
-            </Content>   
+          </div> 
+           <Content> 
+            <ProductsRoutes />
+           </Content>   
           </Layout>
           <Footer>
-              <FooterComponent />
-            </Footer> 
+            <FooterComponent />
+          </Footer> 
         </Layout>
       </CartProvider>
     </AuthProvider>
