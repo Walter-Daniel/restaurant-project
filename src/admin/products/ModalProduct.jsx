@@ -1,13 +1,20 @@
 
 import { useAuth } from "../../context/AuthContext";
-import { Form, Modal } from "antd"
+import { Form, Modal, notification } from "antd"
 import axios from "axios";
 import { ModalComponent } from "./ModalComponent";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 const { confirm } = Modal;
 
-
 const URL = 'http://rolling-food.herokuapp.com/api/product';
+
+const openNotification = (message, description, type) => {
+  notification[type]({
+      message: message,
+      description: description,
+      placement: 'bottom'
+  });
+  };
 
 export const ModalProduct = ({ closeModal, product, isModalVisible }) => {
 
@@ -29,11 +36,8 @@ export const ModalProduct = ({ closeModal, product, isModalVisible }) => {
             })
             form.resetFields();
             closeModal();
-        },
-        
-        onCancel() {
-          console.log('Cancel');
-        },
+            openNotification('Editado', 'El producto ha sido editado con éxito', 'success')
+        }    
       });
     }
     const title = "Editar un producto";

@@ -41,7 +41,7 @@ export const UsersList = ({ users, deleteUser, editUser, user, closeModal, isMod
                     title={item._id}
                     description={item.fullName}
                   />
-                  <div className="list-product">
+                  <div className="order-element">
                     <Text>Email: {item.email}</Text>
                       <div>
                         <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}

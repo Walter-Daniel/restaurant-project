@@ -42,7 +42,7 @@ export const ModalOrder = ({ order, closeModal, isModalVisible }) => {
                         }
               })
               closeModal();
-              openNotification('Editado', 'El producto ha sido editado con éxito', 'success')
+              openNotification('Editado', 'La orden ha sido editada con éxito', 'success')
           }
         });
       }

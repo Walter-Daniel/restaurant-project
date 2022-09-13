@@ -52,10 +52,7 @@ export const ListSidebar = () => {
   return (
     <List
         itemLayout="horizontal"
-        dataSource={
-          !auth.user ? '' :
-                          auth.user.role === 'ADMIN_ROLE' ? linkAdmin : data
-        }
+        dataSource={!auth.user ? '' : auth.user.role === 'ADMIN_ROLE' ? linkAdmin : data }
         renderItem={item => (
             item.protected && !currentUser ? '' : 
 

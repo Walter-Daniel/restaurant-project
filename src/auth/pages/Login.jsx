@@ -1,5 +1,6 @@
 
 import { Button, Checkbox, Form, Input, Col, Row } from 'antd';
+import { createRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
 
@@ -11,26 +12,36 @@ export const Login = () => {
       };
         
     const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+        console.log('Failed:', errorInfo);
     };
+
+    const formReference = createRef();
+
+    const deleteFormText = () => {
+        formReference.current.resetFields()
+    }
      
   return (
     <div className="hero">
         <div className='container-fluid'>
             <Row justify='center' className='login-container'>
-                <Col xs={24} lg={12}>
+                <Col xs={20} md={16} lg={10}>
+                    <div className="last-container">
+                        <h2>Iniciar sesión</h2>
                     <Form
-                        className='login-form'
+                        className='form-container'
                         name="login"
                         labelCol={{
-                            span: 8,
+                            span: 12,
                         }}
                         wrapperCol={{
-                            span: 16,
+                            span: 24,
                         }}
                         initialValues={{
                             remember: true,
                         }}
+                        layout="vertical"
+                        ref={formReference}
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
@@ -44,6 +55,11 @@ export const Login = () => {
                                 type: 'email',
                                 message: 'Por favor ingrese su correo!',
                             },
+                            {
+                                min:8,
+                                max:30,
+                                message: 'El email debe tener entre ${min} y ${max} caracteres'
+                            }
                             ]}
                         >
                             <Input />
@@ -60,35 +76,29 @@ export const Login = () => {
                             {
                                 min: 6,
                                 max: 12, 
-                                message: 'Las contraseña tienen entre ${min} y ${max} caracteres',
+                                message: 'La contraseña debe tener entre ${min} y ${max} caracteres',
                             },
                             ]}
                         >
                             <Input.Password />
                         </Form.Item>
 
-                        <Form.Item
-                            name="remember"
-                            valuePropName="checked"
-                            wrapperCol={{
-                            offset: 8,
-                            span: 16,
-                            }}
-                        >
-                            <Checkbox>Remember me</Checkbox>
-                        </Form.Item>
 
                         <Form.Item
                             wrapperCol={{
-                            offset: 8,
-                            span: 16,
+                            offset: 0,
+                            span: 0,
                             }}
                         >
-                        <Button type="primary" htmlType="submit" >
-                            Ingresar
-                        </Button>
+                            <Button type="default" htmlType="button" onClick={deleteFormText}>
+                            Borrar
+                            </Button>
+                            <Button type="primary" className='btn-second' htmlType="submit" >
+                                Ingresar
+                            </Button>
                         </Form.Item>
                     </Form>
+                    </div>
                 </Col>
             </Row>
         </div>

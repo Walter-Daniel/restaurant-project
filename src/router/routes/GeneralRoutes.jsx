@@ -16,7 +16,7 @@ export const GeneralRoutes = () => {
   return (
     <>
         <Routes>
-            <Route path="/" exact element={<PublicRoute><Home /></PublicRoute>} />
+            <Route path="/*" exact element={<PublicRoute><Home /></PublicRoute>} />
             <Route path="sandwiches" element={<PublicRoute><SandwichesPage /></PublicRoute>} />
             <Route path="empanadas" element={<PublicRoute><EmpanadasPage /></PublicRoute>} />
             <Route path="pizza" element={<PublicRoute><PizzasPage /></PublicRoute>} />

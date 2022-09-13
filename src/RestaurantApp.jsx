@@ -1,9 +1,8 @@
 import { Layout } from 'antd';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
-import { GeneralRoutes } from './router/routes/GeneralRoutes';
+import { GeneralRoutes } from './router/routes/generalRoutes';
 import { FooterComponent, Navbar, Sidebar } from "./ui";
-
 
 const { Header, Content, Footer, Sider } = Layout;
 

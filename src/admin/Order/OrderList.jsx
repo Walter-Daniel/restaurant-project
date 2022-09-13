@@ -1,5 +1,6 @@
 import { Space, Tag, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import {  EditOutlined } from '@ant-design/icons';
+import img from '../../../assets/images/sider/user-2.png';
 const { Text } = Typography;
 
 
@@ -27,7 +28,7 @@ export const OrderList = ({orders, editOrder}) => {
                     price={item.price}                   
                     >
                     <List.Item.Meta
-                        avatar={<Avatar src='../../../assets/images/sider/user (2).png' />}
+                        avatar={<Avatar src={img} />}
                         title={item._id}
                     />
                         <div className="order-element">
@@ -51,7 +52,7 @@ export const OrderList = ({orders, editOrder}) => {
                             </div>
                             <div>
                                 <h4>Estado:</h4>
-                                {item.status === 'PENDING' ? <Tag color="red">Pendiente</Tag> : <Tag color="green">Atendida</Tag>  }
+                                {item.status === 'PENDING' ? <Tag color="red">Pendiente</Tag> : <Tag color="green">Atendido</Tag>  }
 
                             </div>
                         </div>   

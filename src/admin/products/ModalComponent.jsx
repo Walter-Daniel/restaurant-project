@@ -73,7 +73,7 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
             whitespace: true,
           },
           {
-            min: 50, 
+            min: 30, 
             message: 'Debe ingresar un mínimo de ${min} caracteres',
           }
         ]}

@@ -1,17 +1,25 @@
-
-import { useAuth } from '../../context/AuthContext';
-import { Card } from 'antd';
-import React from 'react';
-import { Hero } from '../components/home/Hero';
-
-const { Meta } = Card;
+import { Col, Row } from 'antd';
 
 export const Home = () => {
  
 
   return(
-     <div className="main">
-      <Hero />
-     </div>
+     
+    
+      <div className="heroBlock">
+        <Row>
+            <Col>
+              <div className="container-fluid">
+                <div className="content">
+                  <h3>Cocinamos con amor para que comas con conciencia.</h3>
+                  <p>
+                    Bon appétit, comidas para llevar.-
+                  </p>
+                </div>
+              </div>
+            </Col>
+        </Row>
+      </div>
+     
   )
 }

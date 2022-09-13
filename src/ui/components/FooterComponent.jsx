@@ -12,22 +12,22 @@ export const FooterComponent = () => {
             </div>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="https://www.facebook.com" target="_blank">
                         <FacebookOutlined />
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://www.twitter.com" target="_blank">
                       <TwitterOutlined />
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://www.instagram.com" target="_blank">
                         <InstagramOutlined />
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://www.linkedin.com" target="_blank">
                         <LinkedinOutlined />
                     </a>
                 </li>

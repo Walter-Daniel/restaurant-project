@@ -3,65 +3,11 @@ import {
     Col,
     Form, 
     Row,
-    Select,
     Button
   } from 'antd';
   import { createRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { FormItemsRegister } from '../components';
-  
-  
-  const formItemLayout = {
-    labelCol: {
-      xs: {
-        span: 18,
-      },
-      sm: {
-        span: 8,
-      },
-      md: {
-        span: 8,
-      },
-      lg: {
-        span: 8,
-      },
-    },
-    wrapperCol: {
-      xs: {
-        span: 18,
-      },
-      sm: {
-        span: 16,
-      },
-      md: {
-        span: 16,
-      },
-      lg: {
-        span: 16,
-      },
-    },
-  };
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 4
-        ,
-        offset: 4,
-      },
-      sm: {
-        span: 16,
-        offset: 6,
-      },
-      md: {
-        span: 16,
-        offset: 6,
-      },
-      lg: {
-        span: 16,
-        offset: 6,
-      },
-    },
-  };
   
   export const Register = () => {
     const auth = useAuth();
@@ -81,14 +27,20 @@ import { FormItemsRegister } from '../components';
       
     <div className="hero-register">
       <div className="container-fluid">
-        <Row justify='center'>
-              <Col xs={24} lg={12}>
-                <div className="container-form">
+        <Row justify='center' className='login-container'>
+              <Col xs={20} md={16} lg={10}>
+                <div className="last-container">
+                  <h2>Regístrate</h2>
                   <Form
-                    {...formItemLayout}
                     form={form}
                     name="register"
                     layout="vertical"
+                    labelCol={{
+                      span: 16,
+                    }}
+                    wrapperCol={{
+                        span: 24,
+                    }}
                     onFinish={onFinish}
                     ref={formReference}
                     scrollToFirstError
@@ -105,18 +57,16 @@ import { FormItemsRegister } from '../components';
                             value ? Promise.resolve() : Promise.reject(new Error('Tienes que aceptar las bases y condiciones')),
                         },
                       ]}
-                      {...tailFormItemLayout}
                     >
                       <Checkbox>
                         Acepto las <a href="">bases y concidiones</a>
                       </Checkbox>
                     </Form.Item>
-                      <p>(*) Campos obligatorios</p>
-                    <Form.Item {...tailFormItemLayout}>
+                    <Form.Item>
                         <Button type="default" htmlType="button" onClick={deleteFormText}>
                             Borrar
                         </Button>                
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" className='btn-second' htmlType="submit">
                             Enviar
                         </Button>
                         

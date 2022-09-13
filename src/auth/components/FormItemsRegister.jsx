@@ -34,9 +34,14 @@ export const FormItemsRegister = () => {
             required: true,
             message: 'Por favor introduce tu correo',
           },
+          {
+            min:8,
+            max:30,
+            message: 'El email debe tener entre ${min} y ${max} caracteres'
+          }
         ]}
       >
-        <Input />
+        <Input placeholder='maria@email.com' />
       </Form.Item>
       <Form.Item
         name="password"

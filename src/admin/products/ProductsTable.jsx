@@ -2,6 +2,7 @@ import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import { DeleteOutlined, EditOutlined} from '@ant-design/icons';
 import { ModalProduct } from './ModalProduct';
 import { CreateProduct } from './CRUD/CreateProduct';
+import img from '../../../assets/images/sider/admin-product.png'
 const { Text } = Typography;
 
 export const ProductsTable = ({ products, product,  editProduct, closeModal, isModalVisible, deleteProduct, createProduct, isModalCreateVisible, closeModalCreate}) => {
@@ -39,17 +40,16 @@ export const ProductsTable = ({ products, product,  editProduct, closeModal, isM
                 
               >
                 <List.Item.Meta
-                  avatar={<Avatar src='../../../assets/images/sider/admin-product.png' />}
+                  avatar={<Avatar src={img} />}
                   title={item.name}
                   description={item.description}
                   price={item.price}
                 />
-                <div className="list-product">
+                <div className="order-element">
                   <Text>Categoría: {item.category.name}</Text>
                   <Text strong>Precio: ${item.price}</Text> 
                   <div>
-                  <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}
-
+                    <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}
                   </div>
                 </div>
               </List.Item>

@@ -1,12 +1,12 @@
 import { useCart } from "../../../context/CartContext";
 import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
 import {  MinusCircleOutlined, PlusCircleOutlined} from '@ant-design/icons';
+import img from '../../../../assets/images/sider/admin-product.png'
 const { Text } = Typography;
 
 export const CartContent = () => {
 
     const cart = useCart();
-    const total = cart.cartItems.reduce( (previous, current ) => previous + current.amount * current.price, 0 );
 
   return (
 
@@ -35,7 +35,7 @@ export const CartContent = () => {
               
             >
               <List.Item.Meta
-                avatar={<Avatar src='../../../assets/images/sider/admin-product.png' />}
+                avatar={<Avatar src={img} />}
                 title={item.name}
                 description={item.description}
                 price={item.price}
