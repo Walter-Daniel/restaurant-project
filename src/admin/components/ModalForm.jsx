@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Button, Form, Input, Modal, Radio } from "antd"
+import { Button, Form, Input, Modal, Radio, notification } from "antd"
 import axios from "axios";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
@@ -13,6 +13,14 @@ const layout = {
   wrapperCol: {
     span: 24
   }
+};
+
+const openNotification = (message, description, type) => {
+  notification[type]({
+      message: message,
+      description: description,
+      placement: 'bottom'
+  });
 };
 
 const URL = 'http://rolling-food.herokuapp.com/api/user';
@@ -41,6 +49,7 @@ export const ModalForm = ({ closeModal, user, isModalVisible}) => {
               })
             form.resetFields();
             closeModal();
+            openNotification('Editado', 'El usuario ha sido editado con éxito', 'success')
           }
         });
        
