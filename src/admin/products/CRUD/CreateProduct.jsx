@@ -5,8 +5,11 @@ import axios from "axios";
 import { useAuth } from "../../../context/AuthContext";
 import { ModalComponent } from "../ModalComponent";
 const { confirm } = Modal;
+import { getEnvVariables } from '../../../helpers/getEnvVariables';
 
-const URL = 'http://rolling-food.herokuapp.com/api/product';
+const { VITE_API_URL } = getEnvVariables();
+
+const URL = `${VITE_API_URL}/products`;
 
 export const CreateProduct = ({ closeModalCreate, product, isModalCreateVisible }) => {
     const auth = useAuth();
@@ -20,7 +23,7 @@ export const CreateProduct = ({ closeModalCreate, product, isModalCreateVisible 
         async onOk() {
           const createProduct = await axios.post(`${URL}`, values, {
             headers:  {
-              'Authorization': 'Bearer ' + auth.token
+              'Authorization': auth.token
                       }
             })
             form.resetFields();

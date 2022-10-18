@@ -5,7 +5,12 @@ import { Title } from "../components";
 import { OrderList } from "./OrderList";
 import { ModalOrder } from "./ModalOrder";
 
-const URL = 'http://rolling-food.herokuapp.com/api/order';
+import { getEnvVariables } from '../../helpers/getEnvVariables';
+
+
+const { VITE_API_URL } = getEnvVariables();
+
+const URL = `${VITE_API_URL}/orders`;
 
 export const OrderPage = () => {
     const auth = useAuth();

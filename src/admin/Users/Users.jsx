@@ -4,8 +4,12 @@ import { Title } from "../components";
 import { notification } from 'antd';
 import axios from "axios";
 import { UsersList } from "./UsersList";
+import { getEnvVariables } from '../../helpers/getEnvVariables';
 
-const URL = 'http://rolling-food.herokuapp.com/api/user';
+const { VITE_API_URL } = getEnvVariables();
+
+const URL = `${VITE_API_URL}`;
+
 
 const openNotification = (message, description, type) => {
   notification[type]({
@@ -35,9 +39,9 @@ export const Users = () => {
     
 
     async function getUsers() {
-        const response = await axios(URL, {
+        const response = await axios(`${URL}/users`, {
                 headers: {
-                    'Authorization': 'Bearer ' + auth.token
+                    'Authorization': auth.token
                 }
         })
         const usersDB = response.data.users;
@@ -49,7 +53,7 @@ export const Users = () => {
       try {
         const deletedUser = await axios.delete(`${URL}/${id}` , {
                 headers:  {
-                  'Authorization': 'Bearer ' + auth.token
+                  'Authorization': auth.token
               }
         }) 
         const newUsers = users.filter( user => user._id !== id);

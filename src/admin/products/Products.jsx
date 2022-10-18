@@ -6,10 +6,15 @@ import { ProductsTable } from "./ProductsTable";
 import { Title } from "../components";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
+import { getEnvVariables } from '../../helpers/getEnvVariables'
+
+const { VITE_API_URL } = getEnvVariables();
+
+
 const { confirm } = Modal;
 
 
-const URL = 'http://rolling-food.herokuapp.com/api/product';
+const URL = `${VITE_API_URL}/products`;
 
 const openNotification = (message, description, type) => {
   notification[type]({
