@@ -1,19 +1,17 @@
 
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { Form, Modal } from "antd"
+import { Modal } from "antd"
 import axios from "axios";
 import { useAuth } from "../../../context/AuthContext";
 import { ModalComponent } from "../ModalComponent";
+
+
 const { confirm } = Modal;
-import { getEnvVariables } from '../../../helpers/getEnvVariables';
+const URL = import.meta.env.VITE_API_URL
 
-const { VITE_API_URL } = getEnvVariables();
-
-const URL = `${VITE_API_URL}/products`;
 
 export const CreateProduct = ({ closeModalCreate, product, isModalCreateVisible }) => {
     const auth = useAuth();
-    const [form] = Form.useForm();
     const onFinish =(values) => {
       confirm({
         title: 'Confirmar la operación',
@@ -21,12 +19,11 @@ export const CreateProduct = ({ closeModalCreate, product, isModalCreateVisible 
         content: 'Al darle OK se guardaran los cambios realizados',
         
         async onOk() {
-          const createProduct = await axios.post(`${URL}`, values, {
+          const createProduct = await axios.post(`${URL}/products`, values, {
             headers:  {
               'Authorization': auth.token
                       }
             })
-            form.resetFields();
             closeModalCreate();
         }
       });

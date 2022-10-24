@@ -5,12 +5,7 @@ import { Title } from "../components";
 import { OrderList } from "./OrderList";
 import { ModalOrder } from "./ModalOrder";
 
-import { getEnvVariables } from '../../helpers/getEnvVariables';
-
-
-const { VITE_API_URL } = getEnvVariables();
-
-const URL = `${VITE_API_URL}/orders`;
+const URL = import.meta.env.VITE_API_URL
 
 export const OrderPage = () => {
     const auth = useAuth();
@@ -31,9 +26,9 @@ export const OrderPage = () => {
       }, [])
 
     async function getOrders() {
-        const OrdersDB = await axios(URL, {
+        const OrdersDB = await axios(`${URL}/orders`, {
                 headers: {
-                    'Authorization': 'Bearer ' + auth.token
+                    'Authorization': auth.token
                 }
         })
         const ordersList= OrdersDB.data.orders;

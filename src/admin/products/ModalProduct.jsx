@@ -6,7 +6,7 @@ import { ModalComponent } from "./ModalComponent";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 const { confirm } = Modal;
 
-const URL = 'http://rolling-food.herokuapp.com/api/product';
+const URL = import.meta.env.VITE_API_URL
 
 const openNotification = (message, description, type) => {
   notification[type]({
@@ -29,9 +29,9 @@ export const ModalProduct = ({ closeModal, product, isModalVisible }) => {
         content: 'Al darle OK se guardaran los cambios realizados',
         
         async onOk() {
-          const editProduct = await axios.put(`${URL}/${product._id}` , values, {
+          const editProduct = await axios.put(`${URL}/products/${product._id}` , values, {
             headers:  {
-              'Authorization': 'Bearer ' + auth.token
+              'Authorization': auth.token
                       }
             })
             form.resetFields();

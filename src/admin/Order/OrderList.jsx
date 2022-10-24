@@ -52,7 +52,8 @@ export const OrderList = ({orders, editOrder}) => {
                             </div>
                             <div>
                                 <h4>Estado:</h4>
-                                {item.status === 'PENDING' ? <Tag color="red">Pendiente</Tag> : <Tag color="green">Atendido</Tag>  }
+                                {item.status === 'Pending' ? <Tag color="red">Pendiente</Tag> : 
+                                 item.status === 'Placed' ? <Tag color="green">Atendido</Tag> : <Tag color="red">Cancelado</Tag>     }
 
                             </div>
                         </div>   

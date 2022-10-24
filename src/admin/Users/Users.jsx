@@ -4,12 +4,8 @@ import { Title } from "../components";
 import { notification } from 'antd';
 import axios from "axios";
 import { UsersList } from "./UsersList";
-import { getEnvVariables } from '../../helpers/getEnvVariables';
 
-const { VITE_API_URL } = getEnvVariables();
-
-const URL = `${VITE_API_URL}`;
-
+const URL = import.meta.env.VITE_API_URL
 
 const openNotification = (message, description, type) => {
   notification[type]({
@@ -51,7 +47,7 @@ export const Users = () => {
 
     async function deleteUser(id) {    
       try {
-        const deletedUser = await axios.delete(`${URL}/${id}` , {
+        const deletedUser = await axios.delete(`${URL}/users/${id}` , {
                 headers:  {
                   'Authorization': auth.token
               }

@@ -1,5 +1,6 @@
 import { useEffect} from "react";
-import { Button, Form, Input, InputNumber, Modal, Radio } from "antd"
+import { createRef } from 'react';
+import { Button, Form, Input, InputNumber, Modal, Radio } from "antd";
 
 const { TextArea } = Input;
 
@@ -15,13 +16,14 @@ const layout = {
 export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, title, closeModalCreate, isModalCreateVisible }) => {
 
   const [form] = Form.useForm();
+  const formReference = createRef();
 
   
 
   useEffect(() => {
     isModalVisible ? form.setFieldsValue( product ) : form.resetFields();
   }, [product])
-  
+
   return (
     <Modal visible={ isModalVisible || isModalCreateVisible }
            title={title}
@@ -33,7 +35,7 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
                 <Button type="default" htmlType="button" onClick={closeModal || closeModalCreate }>
                     Cerrar
                 </Button>                
-                <Button type="primary" form="myFormProduct" key="submit" htmlType="submit">
+                <Button type="primary" form="myFormProduct" key="submit" onClick={ form.resetFields() } htmlType="submit">
                     Enviar
                 </Button>                
               </Form.Item>
@@ -42,6 +44,7 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
       <Form {...layout}
             form={form}
             onFinish={onFinish}
+            ref={formReference}
             layout="vertical"
             id="myFormProduct"
       >
@@ -64,7 +67,7 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
         <Input type='text'/>
       </Form.Item>
       <Form.Item
-        name="description"
+        name="detail"
         label="Descripción:"
         rules={[
           {
@@ -93,9 +96,9 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
         rules={[{ required: true, message: 'Por favor, selecciona un estado!' }]}
       >
         <Radio.Group >
-            <Radio value='62df10f595dda728ebec74f5'>Empanadas</Radio>
-            <Radio value='62df10e095dda728ebec74f3'>Pizzas</Radio>
-            <Radio value='62df10d495dda728ebec74ef'>Sandwich</Radio>
+            <Radio value='635170dcc5a32a62d410b13e'>Empanadas</Radio>
+            <Radio value='63516f6fc5a32a62d410b13c'>Pizzas</Radio>
+            <Radio value='63517341c3c4679da104dd3f'>Sandwiches</Radio>
         </Radio.Group>
       </Form.Item>
       <Form.Item

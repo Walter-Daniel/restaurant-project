@@ -1,11 +1,12 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getEnvVariables } from '../helpers/getEnvVariables';
+
 import axios from 'axios';
 import {notification } from 'antd';
 
 const AuthContext = createContext();
-const { VITE_API_URL } = getEnvVariables();
+
+const URL = import.meta.env.VITE_API_URL
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async( formData ) => {
         try {
-            const response = await axios.post( `${VITE_API_URL}/auth/login` , formData);
+            const response = await axios.post( `${URL}/auth/login` , formData);
             const newUser = response.data.user;
             const newToken = response.data.token;
             const role = response.data.user.role;
@@ -35,9 +36,9 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', newToken);
 
 
-            const newProduct = await axios( `${VITE_API_URL}/products`,  {
+            const newProduct = await axios( `${URL}/products`,  {
                 headers: {
-                         Authorization: 'Bearer ' + newToken 
+                         Authorization: newToken 
                         }
             })
             setProduct( newProduct )
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async(formData) => {
         try {
-            const response = await axios.post( `${VITE_API_URL}/auth/register` , formData);
+            const response = await axios.post( `${URL}/auth/register` , formData);
             openNotification('Registro Correcto', 'Su información ha sido guardada en nuestra base datos', 'success')
         } catch (error) {
             console.log(error)

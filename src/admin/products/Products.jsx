@@ -6,15 +6,9 @@ import { ProductsTable } from "./ProductsTable";
 import { Title } from "../components";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
-import { getEnvVariables } from '../../helpers/getEnvVariables'
-
-const { VITE_API_URL } = getEnvVariables();
-
+const URL = import.meta.env.VITE_API_URL
 
 const { confirm } = Modal;
-
-
-const URL = `${VITE_API_URL}/products`;
 
 const openNotification = (message, description, type) => {
   notification[type]({
@@ -51,9 +45,9 @@ export const Products = () => {
     
 
     async function getProducts() {
-        const productsDB = await axios(URL, {
+        const productsDB = await axios(`${URL}/products`, {
                 headers: {
-                    'Authorization': 'Bearer ' + auth.token
+                    'Authorization': auth.token
                 }
         })
         const productList= productsDB.data.products;
@@ -67,9 +61,9 @@ export const Products = () => {
         content: 'Al darle OK se eliminara al producto de la base de datos',
         
         async onOk() {
-          const deletedProduct = await axios.delete(`${URL}/${id}` , {
+          const deletedProduct = await axios.delete(`${URL}/products/${id}` , {
             headers:  {
-              'Authorization': 'Bearer ' + auth.token
+              'Authorization': auth.token
                       }
           }) 
           const newProduct = products.filter( product => product._id !== id);
@@ -108,7 +102,7 @@ export const Products = () => {
         <div className="admin">
           <Title title={title} /> 
           <hr />
-          <ProductsTable products={products} deleteProduct={deleteProduct} editProduct={editProduct} createProduct={createProduct} product ={productToEdit} closeModal={closeModal} isModalVisible={isModalVisible} closeModalCreate={closeModalCreate} isModalCreateVisible={isModalCreateVisible} />
+          <ProductsTable products={products} deleteProduct={deleteProduct} editProduct={editProduct} createProduct={createProduct} product={productToEdit} closeModal={closeModal} isModalVisible={isModalVisible} closeModalCreate={closeModalCreate} isModalCreateVisible={isModalCreateVisible} />
         </div>
     </>
   )

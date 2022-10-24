@@ -1,5 +1,5 @@
 import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
-import { DeleteOutlined, EditOutlined} from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, StarOutlined} from '@ant-design/icons';
 import { ModalProduct } from './ModalProduct';
 import { CreateProduct } from './CRUD/CreateProduct';
 import img from '../../../assets/images/sider/admin-product.png'
@@ -28,11 +28,14 @@ export const ProductsTable = ({ products, product,  editProduct, closeModal, isM
                 key={item.title}
                 extra={
                   <Space >
-                    <Tooltip title='Borrar Usuario'>
+                    <Tooltip title='Borrar Producto'>
                       <Button type='primary' danger shape='circle' icon={<DeleteOutlined />} onClick={() => deleteProduct(item._id)}/>
                     </Tooltip>
-                    <Tooltip title='Editar Usuario'>
+                    <Tooltip title='Editar Producto'>
                             <Button shape='circle' icon={<EditOutlined />} onClick={() => editProduct(item._id)} />
+                    </Tooltip>
+                    <Tooltip title='Promocionar Producto'>
+                            <Button shape='circle' icon={<StarOutlined />} onClick={() => editProduct(item._id)} />
                     </Tooltip>
                 </Space>
                 }

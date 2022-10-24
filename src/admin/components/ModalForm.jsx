@@ -23,7 +23,7 @@ const openNotification = (message, description, type) => {
   });
 };
 
-const URL = 'http://rolling-food.herokuapp.com/api/user';
+const URL = import.meta.env.VITE_API_URL;
 
 export const ModalForm = ({ closeModal, user, isModalVisible}) => {
 
@@ -42,9 +42,9 @@ export const ModalForm = ({ closeModal, user, isModalVisible}) => {
           content: 'Al darle OK se guardaran los cambios realizados',
           
           async onOk() {
-            const editUser = await axios.put(`${URL}/${user._id}` , values, {
+            const editUser = await axios.put(`${URL}/users/${user._id}` , values, {
               headers:  {
-                'Authorization': 'Bearer ' + auth.token
+                'Authorization': auth.token
                         }
               })
             form.resetFields();

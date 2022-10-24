@@ -5,7 +5,7 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 const { confirm } = Modal;
 
-const URL = 'http://rolling-food.herokuapp.com/api/order';
+const URL = import.meta.env.VITE_API_URL;
 
 const layout = {
     labelCol:{
@@ -36,9 +36,9 @@ export const ModalOrder = ({ order, closeModal, isModalVisible }) => {
           content: 'Al darle OK se guardaran los cambios realizados',
           
           async onOk() {
-            const editOrder = await axios.put(`${URL}/${order._id}` , values, {
+            const editOrder = await axios.put(`${URL}/orders/${order._id}` , values, {
               headers:  {
-                'Authorization': 'Bearer ' + auth.token
+                'Authorization': auth.token
                         }
               })
               closeModal();
@@ -79,8 +79,8 @@ export const ModalOrder = ({ order, closeModal, isModalVisible }) => {
         rules={[{ required: true, message: 'Por favor, selecciona un estado!' }]}
       >
         <Radio.Group>
-          <Radio.Button value="PLACED">Atendido</Radio.Button>
-          <Radio.Button value="PENDING">Pendiente</Radio.Button>
+          <Radio.Button value="Placed">Atendido</Radio.Button>
+          <Radio.Button value="Pending">Pendiente</Radio.Button>
         </Radio.Group>
       </Form.Item>  
       </Form>

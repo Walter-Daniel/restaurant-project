@@ -7,7 +7,7 @@ const { confirm } = Modal;
 
 const CartContext = createContext();
 
-const URL = 'http://rolling-food.herokuapp.com/api/order';
+const URL = import.meta.env.VITE_API_URL
 
 const openNotification = (message, description, type) => {
     notification[type]({
@@ -82,9 +82,9 @@ export const CartProvider= ({ children }) => {
                 content: 'Está seguro de que quiere realizar la compra?',
             
                 async onOk() {
-                        const createOrder = await axios.post(`${URL}`, order, {
+                        const createOrder = await axios.post(`${URL}/orders`, order, {
                             headers:  {
-                            'Authorization': 'Bearer ' + auth.token
+                            'Authorization': auth.token
                                     }
                         });
                         openNotification('Compra realizada', 'La compra se ha realizado de manera exitosa', 'success')
