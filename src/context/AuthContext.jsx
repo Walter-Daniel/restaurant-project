@@ -38,10 +38,11 @@ export const AuthProvider = ({ children }) => {
 
             const newProduct = await axios( `${URL}/products`,  {
                 headers: {
-                         Authorization: newToken 
+                         'Authorization': newToken 
                         }
             })
-            setProduct( newProduct )
+            const productList = newProduct
+            setProduct( productList )
             openNotification('Login correcto', 'Inicio de sesión exitoso', 'success')
 
            role === 'USER_ROLE' ? navigation('/', { replace: true }) : navigation('/users' , { replace: true })

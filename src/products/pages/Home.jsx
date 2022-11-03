@@ -1,4 +1,5 @@
 import { Col, Row } from 'antd';
+import { FeaturedProduct } from '../components/FeaturedProduct';
 
 export const Home = () => {
  
@@ -6,7 +7,8 @@ export const Home = () => {
   return(
      
     
-      <div className="heroBlock">
+      <div>
+        <div className="heroBlock">
         <Row>
             <Col>
               <div className="container-fluid">
@@ -19,6 +21,10 @@ export const Home = () => {
               </div>
             </Col>
         </Row>
+      </div>
+      <div>
+        <FeaturedProduct />
+      </div>
       </div>
      
   )

@@ -123,6 +123,16 @@ export const ModalComponent = ({ isModalVisible, closeModal, onFinish, product, 
           <Radio.Button value="false">Inactivo</Radio.Button>
         </Radio.Group>
       </Form.Item>  
+      <Form.Item
+        name="promo"
+        label="Promocionar"
+        rules={[{ required: true, message: 'Por favor, selecciona un estado!' }]}
+      >
+        <Radio.Group>
+          <Radio.Button value="true">Activo</Radio.Button>
+          <Radio.Button value="false">Inactivo</Radio.Button>
+        </Radio.Group>
+      </Form.Item>  
       </Form>
     </Modal>
   )

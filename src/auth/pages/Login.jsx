@@ -1,6 +1,7 @@
 import { Button, Checkbox, Form, Input, Col, Row } from "antd";
 import { createRef } from "react";
 import { useAuth } from "../../context/AuthContext";
+import {notification } from 'antd';
 
 export const Login = () => {
   const auth = useAuth();
@@ -8,9 +9,15 @@ export const Login = () => {
   const onFinish = async (formData) => {
     auth.login(formData);
   };
-
+  const openNotification = (message, description, type) => {
+    notification[type]({
+      message: message,
+      description: description,
+      placement: 'top'
+    });
+  };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    openNotification('Login incorrecto', 'Asegurese de colocar de manera correcta sus datos', 'error')
   };
 
   const formReference = createRef();

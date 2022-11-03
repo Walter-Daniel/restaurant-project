@@ -1,4 +1,4 @@
-import { Space, Button, Tooltip, List, Avatar, Typography } from 'antd';
+import { Space, Button, Tooltip, List, Avatar, Typography, Tag } from 'antd';
 import { DeleteOutlined, EditOutlined, StarOutlined} from '@ant-design/icons';
 import { ModalProduct } from './ModalProduct';
 import { CreateProduct } from './CRUD/CreateProduct';
@@ -54,6 +54,7 @@ export const ProductsTable = ({ products, product,  editProduct, closeModal, isM
                   <div>
                     <Text strong>Estado</Text> : {item.active === true ? <Text type='success' strong>Activo</Text>: <Text strong type='danger'>Inactivo</Text>}
                   </div>
+                  {item.promo === true ? <Tag color="purple">Promocionado</Tag> : ''}
                 </div>
               </List.Item>
             )}
