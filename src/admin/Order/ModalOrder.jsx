@@ -38,7 +38,7 @@ export const ModalOrder = ({ order, closeModal, isModalVisible }) => {
           async onOk() {
             const editOrder = await axios.put(`${URL}/orders/${order._id}` , values, {
               headers:  {
-                'Authorization': auth.token
+                'x-token': auth.token
                         }
               })
               closeModal();

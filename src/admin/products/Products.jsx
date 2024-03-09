@@ -43,13 +43,13 @@ export const Products = () => {
       getProducts();
     }, [])
     
-
     async function getProducts() {
         const productsDB = await axios(`${URL}/products`, {
                 headers: {
-                    'Authorization': auth.token
+                    'x-token': auth.token
                 }
         })
+
         const productList= productsDB.data.products;
         setProducts(productList)
     };
@@ -63,7 +63,7 @@ export const Products = () => {
         async onOk() {
           const deletedProduct = await axios.delete(`${URL}/products/${id}` , {
             headers:  {
-              'Authorization': auth.token
+              'x-token': auth.token
                       }
           }) 
           const newProduct = products.filter( product => product._id !== id);

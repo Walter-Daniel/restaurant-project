@@ -24,7 +24,7 @@ export const CartContent = () => {
               extra={
                 <Space >
                   <Tooltip title='Agregar'>
-                          <Button shape='circle' info icon={<PlusCircleOutlined />} onClick={() => cart.addItemToCart(item)} />
+                          <Button shape='circle' icon={<PlusCircleOutlined />} onClick={() => cart.addItemToCart(item)} />
                   </Tooltip>
                   <Tooltip title='Sacar'>
                     <Button type='primary' danger shape='circle' icon={<MinusCircleOutlined />} onClick={() => cart.deleteItemToCart(item)}/>

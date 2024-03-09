@@ -21,7 +21,7 @@ export const CreateProduct = ({ closeModalCreate, product, isModalCreateVisible 
         async onOk() {
           const createProduct = await axios.post(`${URL}/products`, values, {
             headers:  {
-              'Authorization': auth.token
+              'x-token': auth.token
                       }
             })
             closeModalCreate();

@@ -37,7 +37,7 @@ export const Users = () => {
     async function getUsers() {
         const response = await axios(`${URL}/users`, {
                 headers: {
-                    'Authorization': auth.token
+                    'x-token': auth.token
                 }
         })
         const usersDB = response.data.users;
@@ -49,7 +49,7 @@ export const Users = () => {
       try {
         const deletedUser = await axios.delete(`${URL}/users/${id}` , {
                 headers:  {
-                  'Authorization': auth.token
+                  'x-token': auth.token
               }
         }) 
         const newUsers = users.filter( user => user._id !== id);

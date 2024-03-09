@@ -28,7 +28,7 @@ export const OrderPage = () => {
     async function getOrders() {
         const OrdersDB = await axios(`${URL}/orders`, {
                 headers: {
-                    'Authorization': auth.token
+                    'x-token': auth.token
                 }
         })
         const ordersList= OrdersDB.data.orders;

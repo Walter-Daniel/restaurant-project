@@ -44,7 +44,7 @@ export const ModalForm = ({ closeModal, user, isModalVisible}) => {
           async onOk() {
             const editUser = await axios.put(`${URL}/users/${user._id}` , values, {
               headers:  {
-                'Authorization': auth.token
+                'x-token': auth.token
                         }
               })
             form.resetFields();

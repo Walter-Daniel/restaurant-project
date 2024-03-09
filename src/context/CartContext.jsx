@@ -84,7 +84,7 @@ export const CartProvider= ({ children }) => {
                 async onOk() {
                         const createOrder = await axios.post(`${URL}/orders`, order, {
                             headers:  {
-                            'Authorization': auth.token
+                            'x-token': auth.token
                                     }
                         });
                         openNotification('Compra realizada', 'La compra se ha realizado de manera exitosa', 'success')

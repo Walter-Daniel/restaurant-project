@@ -31,7 +31,7 @@ export const ModalProduct = ({ closeModal, product, isModalVisible }) => {
         async onOk() {
           const editProduct = await axios.put(`${URL}/products/${product._id}` , values, {
             headers:  {
-              'Authorization': auth.token
+              'x-token': auth.token
                       }
             })
             form.resetFields();

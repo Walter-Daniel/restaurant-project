@@ -8,5 +8,7 @@ export const getProductByCategory = ( category ) => {
     if ( !validCategory.includes( category )) {
         throw new Error (`${ category } is not a valid category`)
     }
+
+    console.log(auth.product)
   return auth.product.data.products.filter( product => product.category.name === category);
 }

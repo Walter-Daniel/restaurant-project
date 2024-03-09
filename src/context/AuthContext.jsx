@@ -34,14 +34,13 @@ export const AuthProvider = ({ children }) => {
             setToken ( newToken )
             localStorage.setItem('user', JSON.stringify(newUser));
             localStorage.setItem('token', newToken);
-
-
             const newProduct = await axios( `${URL}/products`,  {
                 headers: {
-                         'Authorization': newToken 
+                         'x-token': newToken 
                         }
             })
             const productList = newProduct
+            localStorage.setItem('product', JSON.stringify(productList));
             setProduct( productList )
             openNotification('Login correcto', 'Inicio de sesión exitoso', 'success')
 
@@ -69,7 +68,6 @@ export const AuthProvider = ({ children }) => {
         navigation('/login');
     }
 
-    
     const auth = {
         user,
         token,
